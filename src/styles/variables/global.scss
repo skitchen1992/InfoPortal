@@ -1,0 +1,36 @@
+:root {
+
+  --font-family-main: Inter, sans-serif;
+
+  --font-size-h1: 2.857rem;
+  --h1: var(--font-size-h1) var(--font-family-main);
+
+  --font-size-h2: 2.286rem;
+  --h2: var(--font-size-h2) var(--font-family-main);
+
+  --font-size-h3: 1.714rem;
+  --h3: var(--font-size-h3) var(--font-family-main);
+
+  --font-size-h4: 1.429rem;
+  --h4: var(--font-size-h4) var(--font-family-main);
+
+  --font-size-h5: 1.286rem;
+  --h5: var(--font-size-h5) var(--font-family-main);
+
+  --font-size-h6: 1.143rem;
+  --h6: var(--font-size-h6) var(--font-family-main);
+
+  --font-size-subtitle1: 1.286em;
+  --subtitle1: var(--font-size-subtitle1) var(--font-family-main);
+
+  --font-size-subtitle2: 1.143rem;
+  --subtitle2: var(--font-size-subtitle2) var(--font-family-main);
+
+  --font-size-body1: 1rem;
+  --body1: var(--font-size-body1) var(--font-family-main);
+
+  --font-size-body2: 0.857rem;
+  --body2: var(--font-size-body2) var(--font-family-main);
+
+
+}
