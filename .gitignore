@@ -19,7 +19,7 @@ coverage/
 .cache/
 .parcel-cache/
 dist/
-lib/
+
 .vscode/
 .idea/
 *.min.js
