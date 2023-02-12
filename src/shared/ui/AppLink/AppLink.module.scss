@@ -1,0 +1,13 @@
+.root {
+  color: var(--text-primary);
+  text-decoration: none;
+  font: var(--body2);
+  font-weight: bold;
+  padding: 8px;
+
+  &:hover {
+    color: var(--header-text-hover-color);
+    background-color: var(--header-bg-hover-color);
+    border-radius: 8px;
+  }
+}
