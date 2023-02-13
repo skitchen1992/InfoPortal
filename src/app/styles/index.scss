@@ -6,6 +6,15 @@
 .app{
   font: var(--body1);
   color: var(--text-primary);
-  background: var(--bg-color);
+  background: var(--page-bg-color);
   min-height: 100vh;
+}
+
+.content-page{
+  display: flex;
+}
+
+.page-wrapper{
+  flex-grow: 1;
+  padding: 16px;
 }

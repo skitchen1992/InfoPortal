@@ -5,10 +5,10 @@
   width: 100%;
   height: var(--header-height);
   border-bottom: 1px solid;
-  border-color: var(--header-border-color);
+  border-color: var(--border-color);
   padding: 8px 16px;
   z-index: 1100;
-  background: var(--header-bg-color);
+  background: var(--main-bg-color);
 }
 
 .links {
