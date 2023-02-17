@@ -2,6 +2,7 @@ import {classNames} from "shared/lib/classNames";
 import cls from "./Sidebar.module.scss"
 import {FC, useState} from "react";
 import {List} from "phosphor-react";
+import {IconButton} from "shared/ui/IconButton/IconButton";
 
 interface IProps {
     className?: string
@@ -19,7 +20,7 @@ export const SideBar: FC<IProps> = (props) => {
     return (
         <div className={classNames(cls.root, {[cls.collapsed]: collapsed}, [className])}>
             <div className={classNames(cls.wrapBtn, {[cls.collapsed]: collapsed}, [className])}>
-                <button onClick={onToggle}><List /></button>
+                <IconButton onClick={onToggle}><List /></IconButton>
             </div>
         </div>
     );
