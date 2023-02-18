@@ -1,7 +1,7 @@
-import {classNames} from "shared/lib/classNames";
-import cls from "./IconButton.module.scss"
-import React, {ButtonHTMLAttributes, FC} from "react";
-import {Size} from "./types";
+import { classNames } from 'shared/lib/classNames';
+import React, { ButtonHTMLAttributes, FC } from 'react';
+import cls from './IconButton.module.scss';
+import { Size } from './types';
 
 interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
@@ -9,13 +9,19 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const IconButton: FC<IProps> = (props) => {
-    const {className, children, size = "small", ...othersProps} = props
+    const {
+        className, children, size = 'small', ...othersProps
+    } = props;
 
     return (
-        <button className={classNames(cls.root, {
-            [cls.small]: size === "small",
-            [cls.large]: size === "large"
-        }, [className])} {...othersProps}>
+        <button
+            type="button"
+            className={classNames(cls.root, {
+                [cls.small]: size === 'small',
+                [cls.large]: size === 'large',
+            }, [className])}
+            {...othersProps}
+        >
             {children}
         </button>
     );
