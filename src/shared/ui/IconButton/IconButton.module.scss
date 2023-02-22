@@ -1,23 +1,24 @@
 .root {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border-color);
-  background-color: var(--main-bg-color);
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--text-fig);
-  &:hover{
-    background-color: var(--main-bg-hover-color) ;
-  }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background-color: var(--main-bg-color);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-fig);
+
+    &:hover {
+        background-color: var(--main-bg-hover-color);
+    }
 }
 
-.small{
-  width: 34px;
-  height: 34px;
+.small {
+    width: 34px;
+    height: 34px;
 }
 
-.large{
-  width: 52px;
-  height: 52px;
+.large {
+    width: 52px;
+    height: 52px;
 }

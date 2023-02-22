@@ -1,21 +1,22 @@
 .root {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: var(--header-height);
-  border-bottom: 1px solid;
-  border-color: var(--border-color);
-  padding: 8px 16px;
-  z-index: 1100;
-  background: var(--main-bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: var(--header-height);
+    border-bottom: 1px solid;
+    border-color: var(--border-color);
+    padding: 8px 16px;
+    z-index: 1100;
+    background: var(--main-bg-color);
 }
 
 .links {
-  display: flex;
-  column-gap: 8px;
+    display: flex;
+    column-gap: 8px;
 }
-.actions{
-  display: flex;
-  gap: 8px;
+
+.actions {
+    display: flex;
+    gap: 8px;
 }
