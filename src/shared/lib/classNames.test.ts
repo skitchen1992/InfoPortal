@@ -31,8 +31,7 @@ describe('classNames', () => {
 
     test('with class and mods', () => {
         const expected = 'class newClass newClass2 active';
-        const isActive = true;
 
-        expect(classNames('class', { active: isActive && 'active' }, ['newClass', 'newClass2'])).toBe(expected);
+        expect(classNames('class', { active: true }, ['newClass', 'newClass2'])).toBe(expected);
     });
 });
