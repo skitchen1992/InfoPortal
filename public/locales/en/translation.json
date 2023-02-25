@@ -1,5 +1,7 @@
 {
   "page.main": "Main",
   "page.about": "About",
-  "page.not_found": "Page not found"
+  "page.not_found": "Page not found",
+  "page.error": "Something went wrong",
+  "label.update_page": "Update page"
 }
