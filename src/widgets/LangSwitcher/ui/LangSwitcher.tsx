@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { IconButton } from 'shared/ui/IconButton/IconButton';
 import { Translate } from 'phosphor-react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { LANG } from './consts';
 import cls from './LangSwitcher.module.scss';
 

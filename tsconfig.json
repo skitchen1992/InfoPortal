@@ -16,7 +16,11 @@
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS",
+      "module": "CommonJS"
     }
-  }
+  },
+//  "include": [
+//    "./config/jest/setupTests.ts"
+//  ],
+  "moduleDirectories": ["node_modules", "src"]
 }
