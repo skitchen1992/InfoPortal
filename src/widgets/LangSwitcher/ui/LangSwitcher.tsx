@@ -24,7 +24,7 @@ export const LangSwitcher: FC<IProps> = (props) => {
             <IconButton className={classNameButton} onClick={toggleLang}>
                 <Translate />
             </IconButton>
-            {i18n.language.toUpperCase()}
+            {i18n?.language?.toUpperCase()}
         </div>
     );
 };

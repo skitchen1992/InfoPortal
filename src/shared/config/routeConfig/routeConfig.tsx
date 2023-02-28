@@ -11,7 +11,7 @@ export enum APP_ROUTES {
 
 export const RoutePath: Record<APP_ROUTES, string> = {
     [APP_ROUTES.MAIN]: '/',
-    [APP_ROUTES.ABOUT]: 'about',
+    [APP_ROUTES.ABOUT]: '/about',
     [APP_ROUTES.NOT_FOUND]: '*',
 };
 

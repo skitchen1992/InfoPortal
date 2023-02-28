@@ -19,8 +19,9 @@
       "module": "CommonJS"
     }
   },
-//  "include": [
-//    "./config/jest/setupTests.ts"
-//  ],
-  "moduleDirectories": ["node_modules", "src"]
+  "include": [
+    "./config/jest/setupTests.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
 }
