@@ -2,26 +2,24 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storyBook/ThemeDecorator/ThemeDecorator';
 import { THEME } from 'app/providers/ThemeProvider';
-import { MainAsync } from './Main.async';
+import Main from 'pages/Main/ui/Main';
 
 export default {
     title: 'pages/MainAsync',
-    component: MainAsync,
+    component: Main,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof MainAsync>;
+} as ComponentMeta<typeof Main>;
 
-const Template: ComponentStory<typeof MainAsync> = (args) => <MainAsync {...args} />;
+const Template: ComponentStory<typeof Main> = (args) => <Main {...args} />;
 
 export const Light = Template.bind({});
-Light.args = {
-};
+Light.args = {};
 
 Light.decorators = [ThemeDecorator(THEME.LIGHT)];
 
 export const Dark = Template.bind({});
-Dark.args = {
-};
+Dark.args = {};
 
 Dark.decorators = [ThemeDecorator(THEME.DARK)];

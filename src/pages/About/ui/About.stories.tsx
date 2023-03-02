@@ -2,17 +2,17 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storyBook/ThemeDecorator/ThemeDecorator';
 import { THEME } from 'app/providers/ThemeProvider';
-import { AboutAsync } from './About.async';
+import About from 'pages/About/ui/About';
 
 export default {
     title: 'pages/AboutAsync',
-    component: AboutAsync,
+    component: About,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof AboutAsync>;
+} as ComponentMeta<typeof About>;
 
-const Template: ComponentStory<typeof AboutAsync> = (args) => <AboutAsync {...args} />;
+const Template: ComponentStory<typeof About> = (args) => <About {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {
