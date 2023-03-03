@@ -24,21 +24,16 @@ jobs:
         run: npm run build:prod
 
       - name: linting typescript
-        parallel: true
         run: npm run lint:ts
 
       - name: linting css
-        parallel: true
         run: npm run lint:scss
 
       - name: unit testing
-        parallel: true
         run: npm run test:unit
 
       - name: build storybook
-        parallel: true
         run: npm run storybook:build
 
       - name: screenshot testing
-        parallel: true
         run: npm run test:ui:ci
