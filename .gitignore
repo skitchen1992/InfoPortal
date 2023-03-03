@@ -10,6 +10,7 @@ yarn-error.log
 apps.iml
 coverage
 /node_modules
+/storybook-static
 /.pnp
 .pnp.js
 /target/
