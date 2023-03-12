@@ -1,14 +1,15 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { SideBar } from 'widgets/SideBar';
+import { componentRender } from 'shared/lib/componentRender/componentRender';
 
 describe('Sidebar', () => {
     test('Test render', () => {
-        render(<SideBar />);
+        componentRender(<SideBar />);
         expect(screen.getByTestId('SideBar')).toBeInTheDocument();
     });
 
     test('Test collapsed', () => {
-        render(<SideBar />);
+        componentRender(<SideBar />);
         const SideBarButton = screen.getByTestId('SideBarButton');
         expect(screen.getByTestId('SideBar')).toBeInTheDocument();
         fireEvent.click(SideBarButton);
