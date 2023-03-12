@@ -1,7 +1,7 @@
 .root {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: right;
     width: 100%;
     height: var(--header-height);
     border-bottom: 1px solid;
@@ -9,11 +9,6 @@
     padding: 8px 16px;
     z-index: 1100;
     background: var(--main-bg-color);
-}
-
-.links {
-    display: flex;
-    column-gap: 8px;
 }
 
 .actions {

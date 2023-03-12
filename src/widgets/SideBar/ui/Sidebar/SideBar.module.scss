@@ -3,10 +3,32 @@
     background-color: var(--main-bg-color);
     width: var(--side-bar_width);
     border-right: 1px solid var(--border-color);
-    padding: 16px;
+    padding: 16px 0;
 }
 
 .collapsed {
     width: var(--side-bar_width-collapsed);
     transition: width 0.3s;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    column-gap: 8px;
+
+    .collapsed {
+        display: none;
+    }
+
+    &:hover {
+        color: var(--main-text-hover-color);
+        background-color: var(--main-bg-hover-color);
+        border-radius: 8px;
+    }
 }
