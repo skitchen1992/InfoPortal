@@ -3,5 +3,6 @@
   "page.about": "About",
   "page.not_found": "Page not found",
   "page.error": "Something went wrong",
-  "label.update_page": "Update page"
+  "label.update_page": "Update page",
+  "label.sign_in": "Sign in"
 }

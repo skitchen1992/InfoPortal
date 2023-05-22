@@ -4,7 +4,7 @@
     justify-content: center;
     border: 1px solid var(--border-color);
     background-color: var(--main-bg-color);
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     cursor: pointer;
     color: var(--text-fig);
 

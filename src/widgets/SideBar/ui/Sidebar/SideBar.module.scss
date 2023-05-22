@@ -29,6 +29,6 @@
     &:hover {
         color: var(--main-text-hover-color);
         background-color: var(--main-bg-hover-color);
-        border-radius: 8px;
+        border-radius: var(--border-radius);
     }
 }
