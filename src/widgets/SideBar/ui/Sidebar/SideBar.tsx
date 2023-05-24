@@ -3,7 +3,7 @@ import React, { FC, useState } from 'react';
 import { House, List, ListDashes } from 'phosphor-react';
 import { IconButton } from 'shared/ui/IconButton/IconButton';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { RoutePath } from 'app/providers/Router/routeConfig/routeConfig';
 import { useTranslation } from 'react-i18next';
 import cls from './SideBar.module.scss';
 
