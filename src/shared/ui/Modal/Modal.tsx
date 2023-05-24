@@ -42,9 +42,6 @@ export const Modal: FC<IProps> = (props) => {
         e.stopPropagation();
     };
 
-    // eslint-disable-next-line no-console
-    console.log('test');
-
     useEffect(() => {
         if (isOpen) {
             window.addEventListener('keydown', onKeyDown);
