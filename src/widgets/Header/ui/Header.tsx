@@ -2,9 +2,9 @@ import React, { FC, useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { Modal } from 'shared/ui/Modal/Modal';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { LoginModal } from 'features/AuthByUserName';
 import cls from './Header.module.scss';
 
 interface IProps {
@@ -18,8 +18,12 @@ export const Header: FC<IProps> = (props) => {
 
     const [isAuthModal, setIsAuthModal] = useState(false);
 
-    const onToggleModal = useCallback(() => {
-        setIsAuthModal((prev) => !prev);
+    const onCloseModal = useCallback(() => {
+        setIsAuthModal(false);
+    }, []);
+
+    const onShowModal = useCallback(() => {
+        setIsAuthModal(true);
     }, []);
 
     return (
@@ -27,18 +31,10 @@ export const Header: FC<IProps> = (props) => {
             <div className={cls.actions}>
                 <ThemeSwitcher />
                 <LangSwitcher />
-                <Button onClick={onToggleModal} className={cls.button}>
+                <Button onClick={onShowModal} className={cls.button}>
                     {t('label.sign_in')}
                 </Button>
-                <Modal isOpen={isAuthModal} onClose={onToggleModal}>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                    {/* eslint-disable-next-line react/no-unescaped-entities */}
-                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-                    of type and scrambled it to make a type specimen book. It has survived not only five centuries, but
-                    also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </Modal>
+                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
             </div>
         </div>
     );
