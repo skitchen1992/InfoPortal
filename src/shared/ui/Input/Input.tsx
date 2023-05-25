@@ -1,18 +1,17 @@
 import React, {
-    FC, InputHTMLAttributes, useEffect, useRef,
+    FC, InputHTMLAttributes,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange' >
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange'>
 
 interface IProps extends HTMLInputProps {
     value?: string
     size?: 'small' | 'large' | 'medium'
-    onChange?: (value: string)=>void
+    onChange?: (value: string) => void
     disabled?: boolean
     loading?: boolean
-    placeholder?: string
     fullWidth?: boolean
 }
 
@@ -20,11 +19,6 @@ export const Input: FC<IProps> = (props) => {
     const {
         className, size = 'large', value, onChange, disabled = false, fullWidth = false, placeholder, ...othersProps
     } = props;
-    const usernameInput = useRef(null);
-
-    useEffect(() => {
-        usernameInput?.current?.focus();
-    }, []);
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
@@ -32,7 +26,6 @@ export const Input: FC<IProps> = (props) => {
 
     return (
         <input
-            ref={usernameInput}
             value={value}
             onChange={onChangeHandler}
             disabled={disabled}

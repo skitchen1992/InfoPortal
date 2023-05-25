@@ -4,5 +4,9 @@
   "page.not_found": "Page not found",
   "page.error": "Something went wrong",
   "label.update_page": "Update page",
-  "label.sign_in": "Sign in"
+  "label.sign_in": "Sign in",
+  "label.submit": "Submit",
+  "label.authorization": "Authorization",
+  "label.login": "Login",
+  "label.password": "Password"
 }

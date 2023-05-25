@@ -10,15 +10,18 @@ interface IProps {
     className?: string
     children?: ReactNode
     isOpen?: boolean
+    title?: string
     onClose?: () => void
+    lazy?: boolean
 }
 
 export const Modal: FC<IProps> = (props) => {
     const {
-        className, isOpen, onClose, children,
+        className, isOpen, onClose, children, title, lazy,
     } = props;
 
     const [isClosing, setClosing] = useState(false);
+    const [isMounted, setMounted] = useState(false);
 
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -44,6 +47,12 @@ export const Modal: FC<IProps> = (props) => {
 
     useEffect(() => {
         if (isOpen) {
+            setMounted(true);
+        }
+    }, [isOpen]);
+
+    useEffect(() => {
+        if (isOpen) {
             window.addEventListener('keydown', onKeyDown);
         }
 
@@ -58,11 +67,16 @@ export const Modal: FC<IProps> = (props) => {
         [cls.isClosing]: isClosing,
     };
 
+    if (lazy && !isMounted) {
+        return null;
+    }
+
     return (
         <Portal>
             <div className={classNames(cls.root, mods, [className])}>
                 <div className={cls.overlay} onClick={closeHandler}>
                     <div className={cls.content} onClick={onContentClick}>
+                        {title && <div className={cls.title}>{title}</div>}
                         {children}
                     </div>
                 </div>
