@@ -44,3 +44,12 @@ Large.args = {
 };
 
 Large.decorators = [ThemeDecorator(THEME.DARK)];
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    size: 'large',
+    children: 'Click',
+    disabled: true,
+};
+
+Disabled.decorators = [ThemeDecorator(THEME.DARK)];

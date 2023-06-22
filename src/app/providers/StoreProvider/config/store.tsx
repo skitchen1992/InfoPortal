@@ -1,15 +1,25 @@
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import {
+    AnyAction, configureStore, ReducersMapObject, ThunkDispatch,
+} from '@reduxjs/toolkit';
+import { loginReducer } from 'features/AuthByUserName';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { userReducer } from 'entities/User';
-import { StateSchema } from './stateSchema';
+import { AppState } from './appState';
 
-export function createReduxStore(initialState?: StateSchema) {
-    const rootReducers : ReducersMapObject<StateSchema> = {
+export function createReduxStore(initialState?: AppState) {
+    const rootReducers : ReducersMapObject<AppState> = {
         user: userReducer,
+        login: loginReducer,
     };
 
-    return configureStore<StateSchema>({
+    return configureStore<AppState>({
         reducer: rootReducers,
         devTools: __IS_DEV__,
         preloadedState: initialState,
     });
 }
+
+type TypedDispatch<T> = ThunkDispatch<T, any, AnyAction>;
+
+export const useAppDispatch = () => useDispatch<TypedDispatch<AppState>>();
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;

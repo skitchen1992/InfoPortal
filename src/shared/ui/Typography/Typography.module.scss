@@ -1,0 +1,47 @@
+.root {
+    color: var(--text-primary);
+}
+
+.h1 {
+    font: var(--h1);
+}
+
+.h2 {
+    font: var(--h2);
+}
+
+.h3 {
+    font: var(--h3);
+}
+
+.h4 {
+    font: var(--h4);
+}
+
+.h5 {
+    font: var(--h5);
+}
+
+.h6 {
+    font: var(--h6);
+}
+
+.body1 {
+    font: var(--body1);
+}
+
+.body2 {
+    font: var(--body2);
+}
+
+.fontWeight {
+    font-weight: bold;
+}
+
+.inherit {
+    color: inherit;
+}
+
+.error {
+    color: var(--color-error);
+}

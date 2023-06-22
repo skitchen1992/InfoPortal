@@ -12,10 +12,6 @@
     --h5: var(--font-size-h5) var(--font-family-main);
     --font-size-h6: 1.143rem;
     --h6: var(--font-size-h6) var(--font-family-main);
-    --font-size-subtitle1: 1.286em;
-    --subtitle1: var(--font-size-subtitle1) var(--font-family-main);
-    --font-size-subtitle2: 1.143rem;
-    --subtitle2: var(--font-size-subtitle2) var(--font-family-main);
     --font-size-body1: 1rem;
     --body1: var(--font-size-body1) var(--font-family-main);
     --font-size-body2: 0.857rem;
@@ -27,6 +23,7 @@
     --color-fig_hover: #0059b2;
     --color-white: #fff;
     --color-black: #000;
+    --color-error: #f44336;
     --modal-z-index: 1300;
     --tooltip-z-index-: 1500;
     --border-radius: 8px;

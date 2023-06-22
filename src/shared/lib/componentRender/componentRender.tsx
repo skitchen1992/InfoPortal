@@ -6,11 +6,11 @@ import { MemoryRouter } from 'react-router-dom';
 import { RoutePath } from 'app/providers/Router/routeConfig/routeConfig';
 import { StoreProvider } from 'app/providers/StoreProvider';
 import { DeepPartial } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/providers/StoreProvider/config/stateSchema';
+import { AppState } from 'app/providers/StoreProvider/config/appState';
 
 export interface RenderWithRouterOptions{
     route?: string
-    initialState?: DeepPartial<StateSchema>
+    initialState?: DeepPartial<AppState>
 }
 
 export function componentRender(component: ReactNode, options:RenderWithRouterOptions = {}) {

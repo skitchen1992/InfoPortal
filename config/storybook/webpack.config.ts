@@ -14,5 +14,10 @@ export default ({ config }: { config: webpack.Configuration }) => {
     config.resolve.modules.push(paths.src);
     config.resolve.extensions.push('.ts', '.tsx');
     config.module.rules.push(buildCssLoaders(true));
+
+    config.resolve.modules = [
+        path.resolve(__dirname, '../../src'),
+        'node_modules',
+    ];
     return config;
 };

@@ -24,3 +24,13 @@
 .large {
     padding: 12px 16px;
 }
+
+.disabled {
+    color: var(--color-disabled);
+    background-color: var(--bg-color-disabled);
+    cursor: not-allowed;
+
+    &:hover {
+        background-color: var(--bg-color-disabled);
+    }
+}
