@@ -5,8 +5,10 @@
   "page.error": "Something went wrong",
   "label.update_page": "Update page",
   "label.sign_in": "Sign in",
+  "label.sign_out": "Sign Out",
   "label.submit": "Submit",
   "label.authorization": "Authorization",
   "label.login": "Login",
-  "label.password": "Password"
+  "label.password": "Password",
+  "label.error.user_not_found": "User not found"
 }

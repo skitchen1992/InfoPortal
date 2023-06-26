@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storyBook/ThemeDecorator/ThemeDecorator';
 import { THEME } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storyBook/StoreDecorator/StoreDecorator';
 import { Button } from './Button';
 
 export default {
@@ -13,13 +14,6 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Click',
-};
-
-Primary.decorators = [ThemeDecorator(THEME.DARK)];
 
 export const Small = Template.bind({});
 Small.args = {

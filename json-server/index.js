@@ -32,7 +32,7 @@ server.post('/login', (req, res) => {
             return res.json(userFromBd);
         }
 
-        return res.status(403).json({ message: 'User not found' });
+        return res.status(403).json({ message: 'user_not_found' });
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: e.message });

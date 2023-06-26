@@ -79,3 +79,12 @@ body2.args = {
 };
 
 body2.decorators = [ThemeDecorator(THEME.DARK)];
+
+export const errorBody2 = Template.bind({});
+errorBody2.args = {
+    children: 'Error',
+    variant: 'body2',
+    color: 'error',
+};
+
+errorBody2.decorators = [ThemeDecorator(THEME.DARK)];

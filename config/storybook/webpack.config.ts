@@ -19,5 +19,10 @@ export default ({ config }: { config: webpack.Configuration }) => {
         path.resolve(__dirname, '../../src'),
         'node_modules',
     ];
+
+    config.plugins.push(new webpack.DefinePlugin({
+        __IS_DEV__: true,
+    }));
+
     return config;
 };

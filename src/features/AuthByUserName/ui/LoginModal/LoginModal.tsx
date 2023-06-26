@@ -23,7 +23,7 @@ export const LoginModal: FC<IProps> = (props) => {
             lazy
             className={classNames(null, {}, [className])}
         >
-            <LoginForm />
+            <LoginForm onClose={onClose} />
         </Modal>
     );
 };
