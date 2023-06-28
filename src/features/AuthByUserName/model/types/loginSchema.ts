@@ -2,8 +2,8 @@ export interface IError {
     message: string;
 }
 export interface ILoginSchema {
-    userName: string;
-    password: string;
+    userName: string | null
+    password: string| null;
     isLoading: boolean;
-    error?: string;
+    error?: string| null;
 }

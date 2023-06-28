@@ -1,22 +1,29 @@
 import {
-    AnyAction, configureStore, ReducersMapObject, ThunkDispatch,
+    AnyAction, configureStore, DeepPartial, ReducersMapObject, ThunkDispatch,
 } from '@reduxjs/toolkit';
-import { loginReducer } from 'features/AuthByUserName';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { userReducer } from 'entities/User';
+import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
 import { AppState } from './appState';
 
-export function createReduxStore(initialState?: AppState) {
+export function createReduxStore(initialState?: AppState, asyncReducers?: ReducersMapObject<AppState>) {
     const rootReducers : ReducersMapObject<AppState> = {
+        ...asyncReducers,
         user: userReducer,
-        login: loginReducer,
     };
 
-    return configureStore<AppState>({
-        reducer: rootReducers,
+    const reducerManager = createReducerManager(rootReducers);
+
+    const store = configureStore<AppState>({
+        reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
         preloadedState: initialState,
     });
+
+    // @ts-ignore
+    store.reducerManager = reducerManager;
+
+    return store;
 }
 
 type TypedDispatch<T> = ThunkDispatch<T, any, AnyAction>;

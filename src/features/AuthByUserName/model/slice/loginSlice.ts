@@ -30,7 +30,7 @@ export const loginSlice = createSlice({
         });
         builder.addCase(loginByUserName.rejected, (state, action) => {
             state.isLoading = false;
-            state.error = action.payload.message;
+            state.error = action.payload?.message;
         });
     },
 });

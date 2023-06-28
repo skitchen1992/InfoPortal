@@ -43,7 +43,7 @@ export const Header: FC<IProps> = (props) => {
                 <Button onClick={authData ? onLogout : onShowModal} className={cls.button}>
                     {authData ? t('label.sign_out') : t('label.sign_in') }
                 </Button>
-                <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+                {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
             </div>
         </div>
     );

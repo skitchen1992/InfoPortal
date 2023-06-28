@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, Suspense } from 'react';
 import { Modal } from 'shared/ui/Modal/Modal';
-import { LoginForm } from 'features/AuthByUserName/ui/LoginForm/LoginForm';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { Loader } from 'shared/ui/Loader/Loader';
+import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
 interface IProps {
     className?: string
@@ -23,7 +24,10 @@ export const LoginModal: FC<IProps> = (props) => {
             lazy
             className={classNames(null, {}, [className])}
         >
-            <LoginForm onClose={onClose} />
+            <Suspense fallback={<Loader />}>
+                <LoginFormAsync onClose={onClose} />
+            </Suspense>
+
         </Modal>
     );
 };

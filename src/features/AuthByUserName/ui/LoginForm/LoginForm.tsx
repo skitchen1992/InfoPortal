@@ -5,25 +5,33 @@ import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider/config/store';
 import { Typography } from 'shared/ui/Typography/Typography';
+import { useDynamicModuleLoad } from 'shared/hooks';
+import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import { loginByUserName } from '../../model/services/loginByUserName/loginByUserName';
-import { getLoginState } from '../../model/selectors/getLoginState/getLoginState';
-import { loginActions } from '../../model/slice/loginSlice';
+import selector from '../../model/selectors/getLoginState/getLoginState';
+import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import cls from './LoginForm.module.scss';
 
-interface IProps {
+const initialReducers : ReducersList = {
+    login: loginReducer,
+};
+
+export interface ILoginForm {
     className?: string
     onClose: () => void
 }
 
-export const LoginForm: FC<IProps> = (props) => {
+const LoginForm: FC<ILoginForm> = (props) => {
     const { className, onClose } = props;
 
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
+    useDynamicModuleLoad({ reducers: initialReducers });
+
     const {
         userName, password, error, isLoading,
-    } = useAppSelector(getLoginState);
+    } = useAppSelector(selector);
 
     const onChangeUserName = useCallback((value) => {
         dispatch(loginActions.setUserName(value));
@@ -50,3 +58,5 @@ export const LoginForm: FC<IProps> = (props) => {
         </div>
     );
 };
+
+export default LoginForm;
