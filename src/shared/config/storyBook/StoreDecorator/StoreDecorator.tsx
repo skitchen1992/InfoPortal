@@ -9,7 +9,7 @@ const defaultAsyncReducers: DeepPartial<ReducersMapObject<AppState>> = {
 };
 
 // eslint-disable-next-line max-len
-export const StoreDecorator = (state: DeepPartial<AppState>, asyncReducers: DeepPartial<ReducersMapObject<AppState>>) => (StoryComponent: Story) => (
+export const StoreDecorator = (state: DeepPartial<AppState>, asyncReducers?: DeepPartial<ReducersMapObject<AppState>>) => (StoryComponent: Story) => (
     <StoreProvider initialState={state} asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}>
         <StoryComponent />
     </StoreProvider>

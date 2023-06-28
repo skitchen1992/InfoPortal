@@ -1,5 +1,5 @@
 import {
-    AnyAction, configureStore, DeepPartial, ReducersMapObject, ThunkDispatch,
+    AnyAction, configureStore, ReducersMapObject, ThunkDispatch,
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { userReducer } from 'entities/User';
