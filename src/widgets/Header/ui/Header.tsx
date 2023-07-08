@@ -7,6 +7,10 @@ import { useTranslation } from 'react-i18next';
 import { LoginModal } from 'features/AuthByUserName';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider/config/store';
 import { getUserAuthData, userActions } from 'entities/User';
+import { IconButton } from 'shared/ui/IconButton/IconButton';
+import { List } from 'phosphor-react';
+import { appActions } from 'app/slice/appSlice';
+import { getSideBarCollapsed } from 'widgets/SideBar/model/selectors/getSideBarCollapsed/getSideBarCollapsed';
 import cls from './Header.module.scss';
 
 interface IProps {
@@ -22,6 +26,7 @@ export const Header: FC<IProps> = (props) => {
     const [isAuthModal, setIsAuthModal] = useState(false);
 
     const authData = useAppSelector(getUserAuthData);
+    const collapsed = useAppSelector(getSideBarCollapsed);
 
     const onCloseModal = useCallback(() => {
         setIsAuthModal(false);
@@ -35,8 +40,14 @@ export const Header: FC<IProps> = (props) => {
         dispatch(userActions.logout());
     }, [dispatch]);
 
+    const onButtonClick = useCallback(() => {
+        dispatch(appActions.setCollapsedSideBar(!collapsed));
+    }, [dispatch, collapsed]);
+
     return (
         <div className={classNames(cls.root, {}, [className])}>
+            <IconButton data-testid="SideBarButton" onClick={onButtonClick}><List /></IconButton>
+
             <div className={cls.actions}>
                 <ThemeSwitcher />
                 <LangSwitcher />

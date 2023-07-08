@@ -1,52 +1,28 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import React, { FC, useState } from 'react';
-import { House, List, ListDashes } from 'phosphor-react';
-import { IconButton } from 'shared/ui/IconButton/IconButton';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'app/providers/Router/routeConfig/routeConfig';
-import { useTranslation } from 'react-i18next';
+import React, { FC } from 'react';
+import { sideBarLinklist } from 'widgets/SideBar/model/LinkList';
+import { SideBarItem } from 'widgets/SideBar';
+import { useAppSelector } from 'app/providers/StoreProvider';
+import { getSideBarCollapsed } from 'widgets/SideBar/model/selectors/getSideBarCollapsed/getSideBarCollapsed';
 import cls from './SideBar.module.scss';
 
-interface IProps {
-    className?: string
-}
-
-export const SideBar: FC<IProps> = (props) => {
-    const { className } = props;
-
-    const [collapsed, setCollapsed] = useState(false);
-
-    const { t } = useTranslation();
-
-    const onToggle = () => {
-        setCollapsed((prev) => !prev);
-    };
+export const SideBar: FC = () => {
+    const collapsed = useAppSelector(getSideBarCollapsed);
 
     return (
-        <div data-testid="SideBar" className={classNames(cls.root, { [cls.collapsed]: collapsed }, [className])}>
-            <div className={classNames(cls.wrapBtn, { [cls.collapsed]: collapsed }, [className])}>
-                <IconButton data-testid="SideBarButton" onClick={onToggle}><List /></IconButton>
+        <div data-testid="SideBar" className={classNames(cls.root, { [cls.collapsed]: collapsed }, [])}>
+            <div className={classNames(cls.wrapBtn, { [cls.collapsed]: collapsed }, [])}>
 
                 <div className={classNames(cls.links, {}, [])}>
-
-                    <AppLink to={RoutePath.main}>
-                        <div className={classNames(cls.link, {}, [])}>
-                            <House size={26} />
-                            <div className={classNames(cls.label, { [cls.collapsed]: collapsed }, [])}>
-                                {t('page.main')}
-                            </div>
-                        </div>
-                    </AppLink>
-
-                    <AppLink to={RoutePath.about}>
-                        <div className={classNames(cls.link, {}, [])}>
-                            <ListDashes size={26} />
-                            <div className={classNames(cls.label, { [cls.collapsed]: collapsed }, [])}>
-                                {t('page.about')}
-                            </div>
-                        </div>
-                    </AppLink>
-
+                    {sideBarLinklist.map((item) => (
+                        <SideBarItem
+                            key={item.label}
+                            routePath={item.routePath}
+                            icon={item.icon}
+                            collapsed={collapsed}
+                            label={item.label}
+                        />
+                    ))}
                 </div>
             </div>
         </div>

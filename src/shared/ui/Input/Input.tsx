@@ -1,6 +1,4 @@
-import React, {
-    FC, InputHTMLAttributes,
-} from 'react';
+import React, { InputHTMLAttributes, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
@@ -15,7 +13,7 @@ interface IProps extends HTMLInputProps {
     fullWidth?: boolean
 }
 
-export const Input: FC<IProps> = (props) => {
+export const Input = memo((props: IProps) => {
     const {
         className, size = 'large', value, onChange, disabled = false, fullWidth = false, placeholder, ...othersProps
     } = props;
@@ -40,4 +38,4 @@ export const Input: FC<IProps> = (props) => {
             {...othersProps}
         />
     );
-};
+});

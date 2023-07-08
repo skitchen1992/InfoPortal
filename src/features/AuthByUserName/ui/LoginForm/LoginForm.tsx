@@ -3,10 +3,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider/config/store';
 import { Typography } from 'shared/ui/Typography/Typography';
 import { useDynamicModuleLoad } from 'shared/hooks';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
+import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
 import { loginByUserName } from '../../model/services/loginByUserName/loginByUserName';
 import selector from '../../model/selectors/getLoginState/getLoginState';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
@@ -41,10 +41,12 @@ const LoginForm: FC<ILoginForm> = (props) => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
 
-    const onLoginClick = useCallback(() => {
-        dispatch(loginByUserName({ userName, password })).then(() => {
+    const onLoginClick = useCallback(async () => {
+        const result = await dispatch(loginByUserName({ userName, password }));
+
+        if (loginByUserName.fulfilled.match(result)) {
             onClose();
-        });
+        }
     }, [dispatch, userName, password, onClose]);
 
     return (

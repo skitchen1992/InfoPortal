@@ -1,14 +1,18 @@
-import { IUserSchema } from 'entities/User';
-import { ILoginSchema } from 'features/AuthByUserName';
+import { IUserState } from 'entities/User';
+import { ILoginState } from 'features/AuthByUserName';
 import {
     AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
+import { IAppState } from 'app/slice/appSlice';
+import { IProfileState } from 'entities/Profile';
 
 export interface AppState {
-    user: IUserSchema;
+    user: IUserState;
+    app: IAppState;
+    profile?: IProfileState;
 
     // async reducers
-    login?: ILoginSchema;
+    login?: ILoginState;
 }
 
 export type AppStateKey = keyof AppState;

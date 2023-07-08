@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first_name": "Nikita",
+    "last_name": "LooK",
+    "age": 20,
+    "city": "Dubai",
+    "country": "UAE",
+    "currency": "AED",
+    "user_name": "admin",
+    "avatar": "https://memepedia.ru/wp-content/uploads/2020/12/udivlennyj-bagz-banni-mem-shablon.jpg"
+  }
 }

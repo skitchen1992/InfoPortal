@@ -1,0 +1,16 @@
+.link {
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    column-gap: 8px;
+
+    .collapsed {
+        display: none;
+    }
+
+    &:hover {
+        color: var(--main-text-hover-color);
+        background-color: var(--main-bg-hover-color);
+        border-radius: var(--border-radius);
+    }
+}

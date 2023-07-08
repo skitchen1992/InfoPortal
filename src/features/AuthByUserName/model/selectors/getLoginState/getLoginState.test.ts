@@ -1,5 +1,5 @@
 import { AppState } from 'app/providers/StoreProvider';
-import { ILoginSchema } from 'features/AuthByUserName';
+import { ILoginState } from 'features/AuthByUserName';
 import { DeepPartial } from '@reduxjs/toolkit';
 import { getLoginState } from './getLoginState';
 
@@ -14,7 +14,7 @@ describe('getLoginState', () => {
             },
         };
 
-        const loginState: ILoginSchema | undefined = getLoginState(appState as AppState);
+        const loginState: ILoginState | undefined = getLoginState(appState as AppState);
 
         expect(loginState).toEqual({
             userName: 'example_user',
@@ -25,12 +25,12 @@ describe('getLoginState', () => {
     });
 
     it('should return undefined if login state is not present in app state', () => {
-        const appState: AppState = {
+        const appState: DeepPartial<AppState> = {
             user: { /* user schema data */ },
             // login state is not defined
         };
 
-        const loginState: ILoginSchema | undefined = getLoginState(appState);
+        const loginState: ILoginState | undefined = getLoginState(appState as AppState);
 
         expect(loginState).toBeUndefined();
     });

@@ -3,7 +3,7 @@
     background-color: var(--main-bg-color);
     width: var(--side-bar_width);
     border-right: 1px solid var(--border-color);
-    padding: 16px 0;
+    padding: 16px 8px;
 }
 
 .collapsed {
@@ -14,21 +14,4 @@
 .links {
     display: flex;
     flex-direction: column;
-}
-
-.link {
-    display: flex;
-    align-items: center;
-    padding: 4px;
-    column-gap: 8px;
-
-    .collapsed {
-        display: none;
-    }
-
-    &:hover {
-        color: var(--main-text-hover-color);
-        background-color: var(--main-bg-hover-color);
-        border-radius: var(--border-radius);
-    }
 }

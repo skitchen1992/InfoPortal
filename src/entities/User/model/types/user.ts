@@ -3,6 +3,6 @@ export interface IUser {
     userName: string
 }
 
-export interface IUserSchema {
+export interface IUserState {
     authData?: IUser
 }

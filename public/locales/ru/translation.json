@@ -1,6 +1,7 @@
 {
   "page.main": "Главная",
   "page.about": "О сайте",
+  "page.profile": "Профиль",
   "page.not_found": "Страница не найдена",
   "page.error": "Что-то пошло не так",
   "label.update_page": "Обновить страницу",
