@@ -6,10 +6,17 @@ import { userReducer } from 'entities/User';
 import { createReducerManager } from 'app/providers/StoreProvider/config/reducerManager';
 import { appReducer } from 'app/slice/appSlice';
 import { profileReducer } from 'entities/Profile';
+import { API } from 'shared/api/api';
+import { NavigateOptions } from 'react-router';
+import { To } from 'history';
 import { AppState } from './appState';
 
-export function createReduxStore(initialState?: AppState, asyncReducers?: ReducersMapObject<AppState>) {
-    const rootReducers : ReducersMapObject<AppState> = {
+export function createReduxStore(
+    initialState?: AppState,
+    asyncReducers?: ReducersMapObject<AppState>,
+    navigate?: (to: To, options?: NavigateOptions) => void,
+) {
+    const rootReducers: ReducersMapObject<AppState> = {
         ...asyncReducers,
         user: userReducer,
         app: appReducer,
@@ -18,10 +25,18 @@ export function createReduxStore(initialState?: AppState, asyncReducers?: Reduce
 
     const reducerManager = createReducerManager(rootReducers);
 
-    const store = configureStore<AppState>({
+    const store = configureStore({
         reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
         preloadedState: initialState,
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+            thunk: {
+                extraArgument: {
+                    api: API,
+                    navigate,
+                },
+            },
+        }),
     });
 
     // @ts-ignore

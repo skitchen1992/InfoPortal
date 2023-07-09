@@ -5,6 +5,9 @@ import {
 } from '@reduxjs/toolkit';
 import { IAppState } from 'app/slice/appSlice';
 import { IProfileState } from 'entities/Profile';
+import { AxiosInstance } from 'axios';
+import { To } from 'history';
+import { NavigateOptions } from 'react-router';
 
 export interface AppState {
     user: IUserState;
@@ -26,4 +29,14 @@ export interface ReducerManager {
 
 export interface ReduxStoreWithManager extends EnhancedStore<AppState> {
     reducerManager: ReducerManager
+}
+
+export interface ThunkExtraArguments {
+    api: AxiosInstance;
+    navigate: (to: To, options?: NavigateOptions) => void,
+}
+
+export interface ThunkConfig<T> {
+    rejectValue: T,
+    extra: ThunkExtraArguments,
 }
