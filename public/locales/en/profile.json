@@ -1,0 +1,9 @@
+{
+  "label.first_name": "First name",
+  "label.last_name": "Last name",
+  "label.age": "Age",
+  "label.city": "City",
+  "label.country": "Country",
+  "label.currency": "Currency",
+  "label.user_name": "User name"
+}

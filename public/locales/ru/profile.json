@@ -1,0 +1,9 @@
+{
+  "label.first_name": "Имя",
+  "label.last_name": "Фамилия",
+  "label.age": "Возраст",
+  "label.city": "Город",
+  "label.country": "Страна",
+  "label.currency": "Валюта",
+  "label.user_name": "Имя пользователя"
+}

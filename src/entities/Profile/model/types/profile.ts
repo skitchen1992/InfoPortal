@@ -3,7 +3,7 @@ import { COUNTRY, CURRENCY } from 'shared/consts/consts';
 export interface IProfile {
     first_name: string,
     last_name: string,
-    age: number,
+    age: string,
     city: string,
     country: COUNTRY,
     currency: CURRENCY,
@@ -13,7 +13,8 @@ export interface IProfile {
 
 export interface IProfileState {
     data: IProfile | null,
-    loading: boolean,
+    hasData: boolean,
+    isLoading: boolean,
     error: string | null,
     readonly: boolean
 }

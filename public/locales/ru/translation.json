@@ -11,5 +11,8 @@
   "label.authorization": "Авторизация",
   "label.login": "Логин",
   "label.password": "Пароль",
+  "label.no_data": "Нет данных",
+  "label.edit": "Редактировать",
+  "label.error": "Что то пошло не так",
   "label.error.user_not_found": "Пользователь не найден"
 }

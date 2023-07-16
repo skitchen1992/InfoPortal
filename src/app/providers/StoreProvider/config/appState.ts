@@ -12,7 +12,7 @@ import { NavigateOptions } from 'react-router';
 export interface AppState {
     user: IUserState;
     app: IAppState;
-    profile?: IProfileState;
+    profile: IProfileState;
 
     // async reducers
     login?: ILoginState;
@@ -33,7 +33,7 @@ export interface ReduxStoreWithManager extends EnhancedStore<AppState> {
 
 export interface ThunkExtraArguments {
     api: AxiosInstance;
-    navigate: (to: To, options?: NavigateOptions) => void,
+    navigate?: (to: To, options?: NavigateOptions) => void,
 }
 
 export interface ThunkConfig<T> {

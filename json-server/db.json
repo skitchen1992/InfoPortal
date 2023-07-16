@@ -28,7 +28,7 @@
   "profile": {
     "first_name": "Nikita",
     "last_name": "LooK",
-    "age": 20,
+    "age": "20",
     "city": "Dubai",
     "country": "UAE",
     "currency": "AED",

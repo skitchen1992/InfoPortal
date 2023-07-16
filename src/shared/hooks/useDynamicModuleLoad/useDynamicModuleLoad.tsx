@@ -22,15 +22,15 @@ export function useDynamicModuleLoad(payload: IUseDynamicModuleLoad) {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        Object.entries(reducers).forEach(([name, reducer]:ReducersListEntry) => {
-            store.reducerManager.add(name, reducer);
+        Object.entries(reducers).forEach(([name, reducer]) => {
+            store.reducerManager.add(name as AppStateKey, reducer);
             dispatch({ type: `@INIT_${name}_REDUCER` });
         });
 
         return () => {
             if (removeAfterUnmount) {
-                Object.entries(reducers).forEach(([name]:ReducersListEntry) => {
-                    store.reducerManager.remove(name);
+                Object.entries(reducers).forEach(([name]) => {
+                    store.reducerManager.remove(name as AppStateKey);
                     dispatch({ type: `@DESTROY_${name}_REDUCER` });
                 });
             }

@@ -13,7 +13,7 @@ export default {
     },
 } as ComponentMeta<typeof Profile>;
 
-const Template: ComponentStory<typeof Profile> = (args) => <Profile {...args} />;
+const Template: ComponentStory<typeof Profile> = () => <Profile />;
 
 export const Light = Template.bind({});
 Light.args = {};

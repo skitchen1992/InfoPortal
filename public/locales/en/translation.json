@@ -11,5 +11,8 @@
   "label.authorization": "Authorization",
   "label.login": "Login",
   "label.password": "Password",
+  "label.no_data": "No data",
+  "label.edit": "Edit",
+  "label.error": "Something went wrong",
   "label.error.user_not_found": "User not found"
 }

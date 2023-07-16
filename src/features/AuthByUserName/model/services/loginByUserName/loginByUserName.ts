@@ -28,10 +28,13 @@ export const loginByUserName = createAsyncThunk<IUser, LoginByUserName, ThunkCon
 
             dispatch(userActions.setAuthUser(response.data));
 
-            extra.navigate(RoutePath.profile);
+            if (extra.navigate) {
+                extra.navigate(RoutePath.profile);
+            }
 
             return response.data;
         } catch (error) {
+            // @ts-ignore
             return rejectWithValue(error.response.data);
         }
     },

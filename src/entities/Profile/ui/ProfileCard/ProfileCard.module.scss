@@ -1,0 +1,32 @@
+.root {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    gap: 24px;
+    padding: 12px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid var(--border-color);
+}
+
+.info {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    flex-direction: column;
+    width: 40em;
+}
+
+.actions {
+    margin-top: 44px;
+}

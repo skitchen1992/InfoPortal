@@ -11,16 +11,16 @@ export default ({ config }: { config: webpack.Configuration }) => {
         src: path.resolve(__dirname, '..', '..', 'src'),
     };
 
-    config.resolve.modules.push(paths.src);
-    config.resolve.extensions.push('.ts', '.tsx');
-    config.module.rules.push(buildCssLoaders(true));
+    config.resolve!.modules!.push(paths.src);
+    config.resolve!.extensions!.push('.ts', '.tsx');
+    config.module!.rules!.push(buildCssLoaders(true));
 
-    config.resolve.modules = [
+    config!.resolve!.modules = [
         path.resolve(__dirname, '../../src'),
         'node_modules',
     ];
 
-    config.plugins.push(new webpack.DefinePlugin({
+    config.plugins!.push(new webpack.DefinePlugin({
         __IS_DEV__: true,
         __API_URL__: '',
     }));

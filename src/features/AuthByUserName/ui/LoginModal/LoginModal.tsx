@@ -22,7 +22,7 @@ export const LoginModal: FC<IProps> = (props) => {
             title={t('label.authorization')}
             onClose={onClose}
             lazy
-            className={classNames(null, {}, [className])}
+            className={classNames('', {}, [className])}
         >
             <Suspense fallback={<Loader />}>
                 <LoginFormAsync onClose={onClose} />

@@ -1,0 +1,19 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+.block {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hasData {
+    align-items: flex-start;
+    justify-content: flex-start;
+}

@@ -1,6 +1,5 @@
 import { AppState } from 'app/providers/StoreProvider';
 import { ILoginState } from 'features/AuthByUserName';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { getLoginState } from './getLoginState';
 
 describe('getLoginState', () => {

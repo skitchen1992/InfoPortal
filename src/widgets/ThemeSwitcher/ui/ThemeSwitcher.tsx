@@ -1,11 +1,11 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC } from 'react';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { Moon, Sun } from 'phosphor-react';
 import { THEME } from 'app/providers/ThemeProvider/lib/ThemeContext';
 import { IconButton } from 'shared/ui/IconButton/IconButton';
 import cls from './ThemeSwitcher.module.scss';
 
-const getIcon = (theme: THEME): ReactElement => {
+const getIcon = (theme: THEME): React.ReactElement | null => {
     switch (theme) {
     case THEME.DARK:
         return <Sun className={cls.icon} />;
