@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IProfile, IProfileState } from 'entities/Profile/model/types/profile';
-import { fetchProfileData } from 'entities/Profile';
+import { fetchProfileData, updateProfileData } from 'entities/Profile';
 
 const initialState: IProfileState = {
-    readonly: true,
+    readOnly: true,
     data: null,
+    form: null,
     hasData: false,
     isLoading: false,
     error: null,
@@ -17,6 +18,19 @@ export const profileSlice = createSlice({
         setAuthUser: (state, action: PayloadAction<IProfile>) => {
             state.data = action.payload;
         },
+        setReadOnly: (state, action: PayloadAction<boolean>) => {
+            state.readOnly = action.payload;
+        },
+        cancelEdit: (state) => {
+            state.readOnly = true;
+            state.form = state.data;
+        },
+        updateProfile: (state, action: PayloadAction<IProfile>) => {
+            state.form = {
+                ...state.form,
+                ...action.payload,
+            };
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchProfileData.pending, (state) => {
@@ -28,8 +42,25 @@ export const profileSlice = createSlice({
             state.error = null;
             state.hasData = Boolean(action.payload);
             state.data = action.payload;
+            state.form = action.payload;
         });
         builder.addCase(fetchProfileData.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload?.message || 'error';
+        });
+        builder.addCase(updateProfileData.pending, (state) => {
+            state.error = null;
+            state.isLoading = true;
+        });
+        builder.addCase(updateProfileData.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.error = null;
+            state.hasData = Boolean(action.payload);
+            state.data = action.payload;
+            state.form = action.payload;
+            state.readOnly = true;
+        });
+        builder.addCase(updateProfileData.rejected, (state, action) => {
             state.isLoading = false;
             state.error = action.payload?.message || 'error';
         });

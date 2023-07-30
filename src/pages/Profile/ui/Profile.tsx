@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDynamicModuleLoad } from 'shared/hooks';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import {
-    fetchProfileData, profileReducer,
+    fetchProfileData, profileActions, profileReducer, updateProfileData,
 } from 'entities/Profile';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
 import { NoDataContainer } from 'shared/ui/NoDataContainer/NoDataContainer';
@@ -18,15 +18,37 @@ const Profile = () => {
 
     useDynamicModuleLoad({ reducers: initialReducers, removeAfterUnmount: true });
 
-    const { isLoading, hasData, error } = useAppSelector(selector);
+    const {
+        isLoading, hasData, error, profile,
+        infoList, readOnly,
+    } = useAppSelector(selector);
 
     useEffect(() => {
         dispatch(fetchProfileData());
     }, [dispatch]);
 
+    const onEdit = useCallback(() => {
+        dispatch(profileActions.setReadOnly(false));
+    }, [dispatch]);
+
+    const onCancel = useCallback(() => {
+        dispatch(profileActions.cancelEdit());
+    }, [dispatch]);
+
+    const onSave = useCallback(() => {
+        dispatch(updateProfileData());
+    }, [dispatch]);
+
     return (
         <NoDataContainer isLoading={isLoading} hasData={hasData} error={error} loaderSize="large">
-            <ProfileCard />
+            <ProfileCard
+                profile={profile}
+                infoList={infoList}
+                readOnly={readOnly}
+                onEdit={onEdit}
+                onCancel={onCancel}
+                onSave={onSave}
+            />
         </NoDataContainer>
     );
 };

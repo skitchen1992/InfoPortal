@@ -17,10 +17,8 @@ export const SideBar: FC = () => {
                     {sideBarLinklist.map((item) => (
                         <SideBarItem
                             key={item.label}
-                            routePath={item.routePath}
-                            icon={item.icon}
+                            item={item}
                             collapsed={collapsed}
-                            label={item.label}
                         />
                     ))}
                 </div>

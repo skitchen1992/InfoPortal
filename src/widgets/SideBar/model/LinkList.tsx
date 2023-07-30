@@ -2,10 +2,11 @@ import React from 'react';
 import { House, ListDashes, UserCircle } from 'phosphor-react';
 import { RoutePath } from 'app/providers/Router/routeConfig/routeConfig';
 
-interface ISideBarLinkList {
+export interface ISideBarLinkList {
     routePath: string;
     icon: React.ReactNode;
     label: string;
+    authOnly?: boolean;
 }
 
 export const sideBarLinklist: ISideBarLinkList[] = [
@@ -23,6 +24,7 @@ export const sideBarLinklist: ISideBarLinkList[] = [
         routePath: RoutePath.profile,
         icon: <UserCircle size={26} />,
         label: 'page.profile',
+        authOnly: true,
     },
 
 ];

@@ -2,28 +2,34 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import React from 'react';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
+import { ISideBarLinkList } from 'widgets/SideBar/model/LinkList';
+import { useAppSelector } from 'app/providers/StoreProvider';
+import { getUserAuthData } from 'entities/User';
 import cls from './SideBarItem.module.scss';
 
 interface IProps {
-    routePath: string;
-    icon: React.ReactNode;
+    item: ISideBarLinkList
     collapsed: boolean;
-    label: string;
 }
 
 export const SideBarItem = (props: IProps) => {
     const {
-        routePath, icon, collapsed, label,
+        collapsed, item,
     } = props;
 
     const { t } = useTranslation();
+    const isAuth = useAppSelector(getUserAuthData);
+
+    if (item.authOnly && !isAuth) {
+        return null;
+    }
 
     return (
-        <AppLink to={routePath}>
+        <AppLink to={item.routePath}>
             <div className={classNames(cls.link, {}, [])}>
-                {icon}
+                {item.icon}
                 <div className={classNames(cls.label, { [cls.collapsed]: collapsed }, [])}>
-                    {t(label)}
+                    {t(item.label)}
                 </div>
             </div>
         </AppLink>

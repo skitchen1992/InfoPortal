@@ -12,13 +12,6 @@
     padding: 12px;
 }
 
-.avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 5px solid var(--border-color);
-}
-
 .info {
     display: flex;
     gap: 24px;
@@ -27,6 +20,12 @@
     width: 40em;
 }
 
-.actions {
+.rootActions {
     margin-top: 44px;
+}
+
+.actions {
+    display: flex;
+    gap: 24px;
+    justify-content: flex-end;
 }

@@ -28,10 +28,7 @@ export const NoDataContainer: FC<IProps> = (props) => {
     const { t } = useTranslation();
 
     return (
-        <div className={classNames(cls.root, {
-            [cls.hasData]: hasData,
-        }, [className])}
-        >
+        <div className={classNames(cls.root, {}, [className])}>
             {isLoading && <Loader size={loaderSize} />}
 
             {!isLoading && !error && children}

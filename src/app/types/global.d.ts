@@ -23,3 +23,8 @@ declare const __API_URL__: string;
 type DeepPartial<T> = T extends object ? {
     [P in keyof T]?: DeepPartial<T[P]>;
 } : T;
+
+interface IOption<V = any, L = any> {
+    value: V;
+    label: L;
+}
