@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IProfile } from 'entities/Profile/model/types/profile';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { IError } from 'features/AuthByUserName/model/types/loginSchema';
+import { IProfile } from '../types/profile';
 
 export const updateProfileData = createAsyncThunk<IProfile, void, ThunkConfig<IError>>(
     'profile/updateProfileData',

@@ -1,5 +1,6 @@
 import React, { InputHTMLAttributes, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Typography } from 'shared/ui/Typography/Typography';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'onChange' | 'readOnly'>
@@ -13,6 +14,7 @@ interface IProps extends HTMLInputProps {
     fullWidth?: boolean
     readOnly?: boolean
     name?: string
+    error?: string
 }
 
 export const Input = memo((props: IProps) => {
@@ -26,6 +28,7 @@ export const Input = memo((props: IProps) => {
         placeholder,
         readOnly,
         name,
+        error,
         ...othersProps
     } = props;
 
@@ -40,17 +43,21 @@ export const Input = memo((props: IProps) => {
         [cls.readOnly]: readOnly,
         [cls.disabled]: disabled,
         [cls.fullWidth]: fullWidth,
+        [cls.error]: error,
     };
 
     return (
-        <input
-            value={value}
-            onChange={onChangeHandler}
-            disabled={disabled}
-            placeholder={placeholder}
-            readOnly={readOnly}
-            className={classNames(cls.root, mods, [className])}
-            {...othersProps}
-        />
+        <div className={classNames(cls.root, {}, [])}>
+            <input
+                value={value}
+                onChange={onChangeHandler}
+                disabled={disabled}
+                placeholder={placeholder}
+                readOnly={readOnly}
+                className={classNames(cls.input, mods, [className])}
+                {...othersProps}
+            />
+            {error && <Typography variant="body2" color="error">{error}</Typography>}
+        </div>
     );
 });

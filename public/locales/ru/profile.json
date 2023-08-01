@@ -6,5 +6,9 @@
   "label.country": "Страна",
   "label.currency": "Валюта",
   "label.user_name": "Имя пользователя",
-  "label.avatar": "Установите аватар"
+  "label.avatar": "Установите аватар",
+  "label.required_first_name": "Имя обязательно",
+  "label.required_last_name": "Фамилия обязательно",
+  "label.required_age": "Возраст обязательно",
+  "label.required_city": "Страна обязательно"
 }

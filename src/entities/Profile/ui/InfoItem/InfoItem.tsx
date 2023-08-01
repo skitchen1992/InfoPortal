@@ -1,11 +1,14 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Typography } from 'shared/ui/Typography/Typography';
 import { Input } from 'shared/ui/Input/Input';
-import { IInfo } from 'pages/Profile/selector/selector';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
+import { IInfo } from 'pages/Profile/ui/selector';
+import { profileActions } from 'entities/Profile';
+import selector from './selector';
 import cls from './InfoItem.module.scss';
 
 interface IProps {
@@ -21,7 +24,17 @@ export const InfoItem = memo((props: IProps) => {
         className, item, readOnly,
     } = props;
 
+    const dispatch = useAppDispatch();
+
+    const { error } = useAppSelector((state) => selector(state, item.field));
+
     const { t } = useTranslation('profile');
+
+    const errorText = error && t(error);
+
+    useEffect(() => {
+        dispatch(profileActions.setValidationError({ field: item.field, error }));
+    }, [dispatch, error, item.field]);
 
     return (
         <div className={classNames(cls.root, {}, [className])}>
@@ -55,6 +68,7 @@ export const InfoItem = memo((props: IProps) => {
                     onChange={onChangeFormField}
                     value={item.value}
                     readOnly={readOnly}
+                    error={errorText}
                 />
             )}
 

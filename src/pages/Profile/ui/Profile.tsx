@@ -7,7 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
 import { NoDataContainer } from 'shared/ui/NoDataContainer/NoDataContainer';
 import { ProfileCard } from 'entities/Profile/ui/ProfileCard/ProfileCard';
-import selector from '../selector/selector';
+import selector from './selector';
 
 const initialReducers: ReducersList = {
     profile: profileReducer,
@@ -20,7 +20,7 @@ const Profile = () => {
 
     const {
         isLoading, hasData, error, profile,
-        infoList, readOnly,
+        infoList, readOnly, hasError,
     } = useAppSelector(selector);
 
     useEffect(() => {
@@ -48,6 +48,7 @@ const Profile = () => {
                 onEdit={onEdit}
                 onCancel={onCancel}
                 onSave={onSave}
+                hasError={hasError}
             />
         </NoDataContainer>
     );

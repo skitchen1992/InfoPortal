@@ -6,5 +6,9 @@
   "label.country": "Country",
   "label.currency": "Currency",
   "label.user_name": "User name",
-  "label.avatar": "Set avatar"
+  "label.avatar": "Set avatar",
+  "label.required_first_name": "First name is required",
+  "label.required_last_name": "Last name is required",
+  "label.required_age": "Age is required",
+  "label.required_city": "City is required"
 }

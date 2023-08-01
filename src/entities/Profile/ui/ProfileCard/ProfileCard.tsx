@@ -8,7 +8,7 @@ import { IProfile } from 'entities/Profile/model/types/profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { profileActions } from 'entities/Profile';
 import { useAppDispatch } from 'app/providers/StoreProvider';
-import { IInfo } from 'pages/Profile/selector/selector';
+import { IInfo } from 'pages/Profile/ui/selector';
 import cls from './ProfileCard.module.scss';
 
 interface IProps {
@@ -19,6 +19,7 @@ interface IProps {
     onEdit?: () => void
     onCancel?: () => void
     onSave?: () => void
+    hasError?: boolean
 }
 
 export const ProfileCard: FC<IProps> = (props) => {
@@ -30,6 +31,7 @@ export const ProfileCard: FC<IProps> = (props) => {
         onEdit,
         onCancel,
         onSave,
+        hasError,
     } = props;
 
     const { t } = useTranslation();
@@ -68,7 +70,7 @@ export const ProfileCard: FC<IProps> = (props) => {
                         <Button size="large" variant="outlineError" onClick={onCancel}>
                             {t('label.cancel')}
                         </Button>
-                        <Button size="large" onClick={onSave}>
+                        <Button size="large" disabled={hasError} onClick={onSave}>
                             {t('label.save')}
                         </Button>
                     </div>

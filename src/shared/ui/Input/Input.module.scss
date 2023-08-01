@@ -1,4 +1,10 @@
 .root {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input {
     border: 1px solid var(--border-color);
     background-color: var(--main-bg-color);
     border-radius: var(--border-radius);
@@ -38,4 +44,8 @@
     &:hover {
         border-color: transparent;
     }
+}
+
+.error {
+    border-color: var(--color-error);
 }

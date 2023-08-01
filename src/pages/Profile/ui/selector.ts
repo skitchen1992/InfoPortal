@@ -4,10 +4,12 @@ import { AppState } from 'app/providers/StoreProvider';
 
 export interface IInfo {
     label: string;
-    value?: string ;
+    value?: string;
     field: string;
 }
+
 export const getProfileForm = (state: AppState) => state.profile.form;
+export const getProfileValidationError = (state: AppState) => state.profile.validationError;
 
 const getInfoList = createSelector(getProfileForm, (form): IInfo[] => [
     { label: 'label.first_name', value: form?.first_name, field: 'first_name' },
@@ -20,11 +22,27 @@ const getInfoList = createSelector(getProfileForm, (form): IInfo[] => [
     { label: 'label.currency', value: form?.currency, field: 'currency' },
 ]);
 
-export default createSelector([getProfileData, getProfileState, getInfoList], (profile, state, infoList) => ({
+const getHasError = createSelector(
+    getProfileValidationError,
+    (errorsForm) => Boolean(Object.values(errorsForm).find((error) => error?.error)),
+);
+
+export default createSelector([
+    getProfileData,
+    getProfileState,
+    getInfoList,
+    getHasError,
+], (
+    profile,
+    state,
+    infoList,
+    hasError,
+) => ({
     isLoading: state!.isLoading,
     hasData: state!.hasData,
     error: state?.error,
     readOnly: state!.readOnly,
     profile,
     infoList,
+    hasError,
 }));

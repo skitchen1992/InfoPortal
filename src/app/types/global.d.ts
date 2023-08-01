@@ -28,3 +28,5 @@ interface IOption<V = any, L = any> {
     value: V;
     label: L;
 }
+
+type Nullable<T> = T | null;
