@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Typography } from 'shared/ui/Typography/Typography';
 import { InfoItem } from 'entities/Profile/ui/InfoItem/InfoItem';
@@ -6,8 +6,6 @@ import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { IProfile } from 'entities/Profile/model/types/profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { profileActions } from 'entities/Profile';
-import { useAppDispatch } from 'app/providers/StoreProvider';
 import { IInfo } from 'pages/Profile/ui/selector';
 import cls from './ProfileCard.module.scss';
 
@@ -19,6 +17,7 @@ interface IProps {
     onEdit?: () => void
     onCancel?: () => void
     onSave?: () => void
+    onChangeFormField: (value: string, name?: string) => void
     hasError?: boolean
 }
 
@@ -31,15 +30,11 @@ export const ProfileCard: FC<IProps> = (props) => {
         onEdit,
         onCancel,
         onSave,
+        onChangeFormField,
         hasError,
     } = props;
 
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
-
-    const onChangeFormField = useCallback((value, field) => {
-        dispatch(profileActions.updateProfile({ [field]: value }));
-    }, [dispatch]);
 
     return (
         <div className={classNames(cls.root, {}, [className])}>

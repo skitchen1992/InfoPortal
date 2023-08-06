@@ -1,4 +1,4 @@
-import { IErrorField, IProfile, VALIDATE_PROFILE_ERROR } from '../types/profile';
+import { IErrorField, IProfile, VALIDATE_PROFILE_ERROR } from '../../types/profile';
 
 export const validateProfileData = (profile: Nullable<IProfile>): IErrorField[] => {
     if (!profile) {

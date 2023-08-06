@@ -5,7 +5,7 @@ import { ThemeDecorator } from 'shared/config/storyBook/ThemeDecorator/ThemeDeco
 import { THEME } from 'app/providers/ThemeProvider';
 
 export default {
-    title: 'shared/Currency',
+    title: 'entities/Currency',
     component: Currency,
     argTypes: {
         backgroundColor: { control: 'color' },

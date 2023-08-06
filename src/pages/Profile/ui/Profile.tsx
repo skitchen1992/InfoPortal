@@ -24,7 +24,9 @@ const Profile = () => {
     } = useAppSelector(selector);
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onEdit = useCallback(() => {
@@ -39,6 +41,10 @@ const Profile = () => {
         dispatch(updateProfileData());
     }, [dispatch]);
 
+    const onChangeFormField = useCallback((value, field) => {
+        dispatch(profileActions.updateProfile({ [field]: value }));
+    }, [dispatch]);
+
     return (
         <NoDataContainer isLoading={isLoading} hasData={hasData} error={error} loaderSize="large">
             <ProfileCard
@@ -48,6 +54,7 @@ const Profile = () => {
                 onEdit={onEdit}
                 onCancel={onCancel}
                 onSave={onSave}
+                onChangeFormField={onChangeFormField}
                 hasError={hasError}
             />
         </NoDataContainer>

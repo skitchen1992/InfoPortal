@@ -5,7 +5,7 @@ import { THEME } from 'app/providers/ThemeProvider';
 import { Country } from 'entities/Country';
 
 export default {
-    title: 'shared/Country',
+    title: 'entities/Country',
     component: Country,
     argTypes: {
         backgroundColor: { control: 'color' },

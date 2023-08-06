@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { IError } from 'features/AuthByUserName/model/types/loginSchema';
-import { IProfile } from '../types/profile';
+import { IProfile } from '../../types/profile';
 
 export const updateProfileData = createAsyncThunk<IProfile, void, ThunkConfig<IError>>(
     'profile/updateProfileData',
@@ -12,10 +12,14 @@ export const updateProfileData = createAsyncThunk<IProfile, void, ThunkConfig<IE
 
             const response = await extra.api.put<IProfile>('/profile', formData);
 
+            if (!response.data) {
+                throw new Error();
+            }
+
             return response.data;
         } catch (error) {
             // @ts-ignore
-            return rejectWithValue(error.response.data);
+            return rejectWithValue(error.response.message);
         }
     },
 );
