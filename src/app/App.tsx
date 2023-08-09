@@ -4,12 +4,15 @@ import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/Router';
 import { Header } from 'widgets/Header';
 import { SideBar } from 'widgets/SideBar';
-import { useAppDispatch } from 'app/providers/StoreProvider/config/store';
+import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider/config/store';
 import { userActions } from 'entities/User/model/slice/userSlice';
+import { getUserInitialized } from 'entities/User';
 
 const App: FC = () => {
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
+
+    const initialized = useAppSelector(getUserInitialized);
 
     useEffect(() => {
         dispatch(userActions.initAuthUser());
@@ -21,7 +24,7 @@ const App: FC = () => {
                 <Header />
                 <div className={classNames('content-page')}>
                     <SideBar />
-                    <AppRouter />
+                    {initialized && <AppRouter />}
                 </div>
             </Suspense>
         </div>
