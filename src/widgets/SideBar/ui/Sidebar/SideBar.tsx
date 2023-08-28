@@ -11,17 +11,14 @@ export const SideBar: FC = () => {
 
     return (
         <div data-testid="SideBar" className={classNames(cls.root, { [cls.collapsed]: collapsed }, [])}>
-            <div className={classNames(cls.wrapBtn, { [cls.collapsed]: collapsed }, [])}>
-
-                <div className={classNames(cls.links, {}, [])}>
-                    {sideBarLinklist.map((item) => (
-                        <SideBarItem
-                            key={item.label}
-                            item={item}
-                            collapsed={collapsed}
-                        />
-                    ))}
-                </div>
+            <div className={classNames(cls.links, {}, [])}>
+                {sideBarLinklist.map((item) => (
+                    <SideBarItem
+                        key={item.label}
+                        item={item}
+                        collapsed={collapsed}
+                    />
+                ))}
             </div>
         </div>
     );

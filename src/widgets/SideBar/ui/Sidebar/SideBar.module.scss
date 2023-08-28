@@ -4,6 +4,8 @@
     width: var(--side-bar_width);
     border-right: 1px solid var(--border-color);
     padding: 16px 8px;
+    position: sticky;
+    top: var(--header-height);
 }
 
 .collapsed {

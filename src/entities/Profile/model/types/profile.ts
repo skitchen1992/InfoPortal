@@ -31,7 +31,7 @@ export interface IProfileState {
     form: Nullable<IProfile>,
     hasData: boolean,
     isLoading: boolean,
-    error: string | null,
+    error: Nullable<string>,
     readOnly: boolean
     validationError: IErrorForm[],
 }

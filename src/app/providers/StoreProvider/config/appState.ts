@@ -8,6 +8,7 @@ import { IProfileState } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
 import { To } from 'history';
 import { NavigateOptions } from 'react-router';
+import { IArticleDetailsState } from 'entities/Article';
 
 export interface AppState {
     user: IUserState;
@@ -16,6 +17,7 @@ export interface AppState {
 
     // async reducers
     login?: ILoginState;
+    articleDetails?: IArticleDetailsState
 }
 
 export type AppStateKey = keyof AppState;

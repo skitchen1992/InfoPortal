@@ -23,7 +23,7 @@ const enum COLOR {
 }
 
 interface IProps {
-    variant: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2'
+    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2'
     children?: string | ReactNode
     fontWeight?: boolean
     color?: 'error' | 'primary' | 'secondary' | 'textPrimary' | 'textSecondary' | 'inherit'
@@ -32,7 +32,7 @@ interface IProps {
 
 export const Typography: FC<IProps> = (props) => {
     const {
-        children, variant, fontWeight, color, className,
+        children, variant = 'body1', fontWeight, color, className,
     } = props;
 
     return (

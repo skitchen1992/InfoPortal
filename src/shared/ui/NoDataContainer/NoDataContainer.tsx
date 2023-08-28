@@ -1,10 +1,23 @@
-import { FC, ReactNode } from 'react';
+import { FC, FunctionComponent, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Robot, Warning } from 'phosphor-react';
 import { Typography } from 'shared/ui/Typography/Typography';
 import cls from './NoDataContainer.module.scss';
+
+const EmptyLayout: FunctionComponent = () => {
+    const { t } = useTranslation();
+
+    return (
+        <div className={cls.block}>
+            <div>
+                <Robot size={32} weight="bold" />
+            </div>
+            <Typography variant="body1">{t('label.no_data')}</Typography>
+        </div>
+    );
+};
 
 interface IProps {
     isLoading: boolean
@@ -13,6 +26,8 @@ interface IProps {
     error?: string | null
     loaderSize?: 'small' | 'medium' | 'large'
     className?: string
+    loader?: React.ReactNode;
+    noDataContent?: React.ReactNode;
 }
 
 export const NoDataContainer: FC<IProps> = (props) => {
@@ -23,25 +38,23 @@ export const NoDataContainer: FC<IProps> = (props) => {
         error,
         className,
         loaderSize,
+        loader,
+        noDataContent,
     } = props;
 
     const { t } = useTranslation();
 
+    const loaderToRender = loader || <Loader size={loaderSize} />;
+    const noDataToRender = noDataContent || <EmptyLayout />;
+
     return (
         <div className={classNames(cls.root, {}, [className])}>
-            {isLoading && <Loader size={loaderSize} />}
+            {isLoading && loaderToRender}
 
             {!isLoading && !error && children}
 
-            {!isLoading && !hasData && !error
-                && (
-                    <div className={cls.block}>
-                        <div>
-                            <Robot size={32} weight="bold" />
-                        </div>
-                        <Typography variant="body1">{t('label.no_data')}</Typography>
-                    </div>
-                ) }
+            {!isLoading && !hasData && !error && (noDataToRender) }
+
             {!isLoading && error
                 && (
                     <div className={cls.block}>

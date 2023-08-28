@@ -6,6 +6,10 @@ import { ProfilePage } from 'pages/Profile';
 import { ArticleDetails } from 'pages/ArticleDetails';
 import { Articles } from 'pages/Articles';
 
+export type IArticleParams = {
+    articleId?: string;
+}
+
 export type AppRouterProps = RouteProps & {
     authOnly?: boolean;
 }
@@ -22,7 +26,7 @@ export const RoutePath: Record<APP_ROUTES, string> = {
     [APP_ROUTES.MAIN]: '/',
     [APP_ROUTES.ABOUT]: '/about',
     [APP_ROUTES.PROFILE]: '/profile',
-    [APP_ROUTES.ARTICLE_DETAILS]: '/article_details', // + :id
+    [APP_ROUTES.ARTICLE_DETAILS]: '/article_details', // + : articleId
     [APP_ROUTES.ARTICLES]: '/articles',
     [APP_ROUTES.NOT_FOUND]: '*',
 };
@@ -42,7 +46,7 @@ export const routeConfig: Record<APP_ROUTES, AppRouterProps> = {
         authOnly: true,
     },
     [APP_ROUTES.ARTICLE_DETAILS]: {
-        path: `${RoutePath.article_details}/:id`,
+        path: `${RoutePath.article_details}/:articleId`,
         element: <ArticleDetails />,
         authOnly: true,
     },

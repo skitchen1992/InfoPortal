@@ -5,11 +5,13 @@ import { loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
 import { profileReducer } from 'entities/Profile';
 import { appReducer } from 'app/slice/appSlice';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
+import { articleDetailsReducer } from 'entities/Article';
 
 const defaultAsyncReducers: ReducersList = {
     login: loginReducer,
     profile: profileReducer,
     app: appReducer,
+    articleDetails: articleDetailsReducer,
 
 };
 
