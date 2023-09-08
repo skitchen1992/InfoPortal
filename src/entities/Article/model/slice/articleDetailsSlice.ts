@@ -31,7 +31,7 @@ export const articleDetailsSlice = createSlice({
             })
             .addCase(fetchArticleById.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = action.payload || null;
+                state.error = action.payload || 'error';
             });
     },
 });

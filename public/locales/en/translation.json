@@ -16,6 +16,7 @@
   "label.edit": "Edit",
   "label.cancel": "Cancel",
   "label.save": "Save",
+  "label.comments": "Comments",
   "label.error": "Something went wrong",
   "label.error.user_not_found": "User not found"
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useDynamicModuleLoad } from 'shared/hooks';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import {
@@ -7,6 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
 import { NoDataContainer } from 'shared/ui/NoDataContainer/NoDataContainer';
 import { ProfileCard } from 'entities/Profile/ui/ProfileCard/ProfileCard';
+import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
 import selector from './selector';
 
 const initialReducers: ReducersList = {
@@ -23,11 +24,9 @@ const Profile = () => {
         infoList, readOnly, hasError,
     } = useAppSelector(selector);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
-    }, [dispatch]);
+    useInitialEffect(() => {
+        dispatch(fetchProfileData());
+    });
 
     const onEdit = useCallback(() => {
         dispatch(profileActions.setReadOnly(false));

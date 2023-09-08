@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { useAppDispatch } from 'app/providers/StoreProvider';
@@ -7,6 +7,7 @@ import { ReducersList, useDynamicModuleLoad } from 'shared/hooks/useDynamicModul
 import { NoDataContainer } from 'shared/ui/NoDataContainer/NoDataContainer';
 import { Typography } from 'shared/ui/Typography/Typography';
 import { CalendarBlank, Eye } from 'phosphor-react';
+import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
 import { ArticleDetailsSkeleton } from '../ArticleDetailsSkeleton/ArticleDetailsSkeleton';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
@@ -71,11 +72,9 @@ export const ArticleDetailsRoot = memo((props: IProps) => {
         }
     }, []);
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchArticleById(id!));
-        }
-    }, [dispatch, id]);
+    useInitialEffect(() => {
+        dispatch(fetchArticleById(id!));
+    });
 
     if (!id) {
         return null;
@@ -83,8 +82,8 @@ export const ArticleDetailsRoot = memo((props: IProps) => {
 
     return (
         <NoDataContainer
-            isLoading={isLoading!}
-            hasData={hasData!}
+            isLoading={isLoading}
+            hasData={hasData}
             loader={<ArticleDetailsSkeleton />}
             error={error}
             loaderSize="large"

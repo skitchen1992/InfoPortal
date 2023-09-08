@@ -9,6 +9,7 @@ import { AxiosInstance } from 'axios';
 import { To } from 'history';
 import { NavigateOptions } from 'react-router';
 import { IArticleDetailsState } from 'entities/Article';
+import { ArticleDetailsCommentsState } from 'pages/ArticleDetails';
 
 export interface AppState {
     user: IUserState;
@@ -18,6 +19,7 @@ export interface AppState {
     // async reducers
     login?: ILoginState;
     articleDetails?: IArticleDetailsState
+    articleDetailsComments?: ArticleDetailsCommentsState
 }
 
 export type AppStateKey = keyof AppState;
