@@ -19,6 +19,7 @@ interface IProps {
     onSave?: () => void
     onChangeFormField: (value: string, name?: string) => void
     hasError?: boolean
+    isEdit?: boolean
 }
 
 export const ProfileCard: FC<IProps> = (props) => {
@@ -32,6 +33,7 @@ export const ProfileCard: FC<IProps> = (props) => {
         onSave,
         onChangeFormField,
         hasError,
+        isEdit,
     } = props;
 
     const { t } = useTranslation();
@@ -56,19 +58,24 @@ export const ProfileCard: FC<IProps> = (props) => {
                 ))}
             </div>
             <div className={classNames(cls.rootActions, {}, [])}>
-                {readOnly ? (
-                    <Button size="large" onClick={onEdit}>
-                        {t('label.edit')}
-                    </Button>
-                ) : (
-                    <div className={classNames(cls.actions, {}, [])}>
-                        <Button size="large" variant="outlineError" onClick={onCancel}>
-                            {t('label.cancel')}
-                        </Button>
-                        <Button size="large" disabled={hasError} onClick={onSave}>
-                            {t('label.save')}
-                        </Button>
-                    </div>
+                {isEdit
+                && (
+                    <>
+                        {readOnly ? (
+                            <Button size="large" onClick={onEdit}>
+                                {t('label.edit')}
+                            </Button>
+                        ) : (
+                            <div className={classNames(cls.actions, {}, [])}>
+                                <Button size="large" variant="outlineError" onClick={onCancel}>
+                                    {t('label.cancel')}
+                                </Button>
+                                <Button size="large" disabled={hasError} onClick={onSave}>
+                                    {t('label.save')}
+                                </Button>
+                            </div>
+                        )}
+                    </>
                 )}
             </div>
         </div>

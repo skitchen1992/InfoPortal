@@ -3,6 +3,7 @@ import { COUNTRY, CURRENCY } from 'shared/consts/consts';
 import { updateProfileData } from './updateProfileData';
 
 const data = {
+    id: '1',
     first_name: 'Niki',
     last_name: 'Lav',
     age: '123',

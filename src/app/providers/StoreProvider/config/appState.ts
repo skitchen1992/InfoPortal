@@ -10,6 +10,7 @@ import { To } from 'history';
 import { NavigateOptions } from 'react-router';
 import { IArticleDetailsState } from 'entities/Article';
 import { ArticleDetailsCommentsState } from 'pages/ArticleDetails';
+import { AddCommentFormState } from 'features/addCommentForm';
 
 export interface AppState {
     user: IUserState;
@@ -20,6 +21,7 @@ export interface AppState {
     login?: ILoginState;
     articleDetails?: IArticleDetailsState
     articleDetailsComments?: ArticleDetailsCommentsState
+    addCommentForm?: AddCommentFormState;
 }
 
 export type AppStateKey = keyof AppState;

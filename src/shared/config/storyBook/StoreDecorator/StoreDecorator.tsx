@@ -6,12 +6,16 @@ import { profileReducer } from 'entities/Profile';
 import { appReducer } from 'app/slice/appSlice';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import { articleDetailsReducer } from 'entities/Article';
+import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentFormSlice';
+import { articleDetailsCommentsReducer } from 'pages/ArticleDetails/model/slices/articleDetailsCommentsSlice';
 
 const defaultAsyncReducers: ReducersList = {
     login: loginReducer,
     profile: profileReducer,
     app: appReducer,
     articleDetails: articleDetailsReducer,
+    articleDetailsComments: articleDetailsCommentsReducer,
+    addCommentForm: addCommentFormReducer,
 
 };
 

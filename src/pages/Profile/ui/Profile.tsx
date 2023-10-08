@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
 import { NoDataContainer } from 'shared/ui/NoDataContainer/NoDataContainer';
 import { ProfileCard } from 'entities/Profile/ui/ProfileCard/ProfileCard';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
+import { IProfileParams } from 'app/providers/Router/routeConfig/routeConfig';
 import selector from './selector';
 
 const initialReducers: ReducersList = {
@@ -16,16 +18,19 @@ const initialReducers: ReducersList = {
 
 const Profile = () => {
     const dispatch = useAppDispatch();
+    const { profileId } = useParams<IProfileParams>();
 
-    useDynamicModuleLoad({ reducers: initialReducers, removeAfterUnmount: true });
+    useDynamicModuleLoad({ reducers: initialReducers });
 
     const {
         isLoading, hasData, error, profile,
-        infoList, readOnly, hasError,
+        infoList, readOnly, hasError, isEdit,
     } = useAppSelector(selector);
 
     useInitialEffect(() => {
-        dispatch(fetchProfileData());
+        if (profileId) {
+            dispatch(fetchProfileData(profileId));
+        }
     });
 
     const onEdit = useCallback(() => {
@@ -55,6 +60,7 @@ const Profile = () => {
                 onSave={onSave}
                 onChangeFormField={onChangeFormField}
                 hasError={hasError}
+                isEdit={isEdit}
             />
         </NoDataContainer>
     );

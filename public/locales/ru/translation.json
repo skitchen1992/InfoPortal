@@ -17,6 +17,8 @@
   "label.cancel": "Отменить",
   "label.save": "Сохранить",
   "label.comments": "Комментарии",
+  "label.sent": "Отправить",
+  "label.enter_comment_text": "Введите текст комментария",
   "label.error": "Что то пошло не так",
   "label.error.user_not_found": "Пользователь не найден"
 }

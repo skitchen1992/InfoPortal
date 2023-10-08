@@ -3,12 +3,12 @@ import { ThunkConfig } from 'app/providers/StoreProvider';
 import { IError } from 'features/AuthByUserName/model/types/loginSchema';
 import { IProfile } from '../../types/profile';
 
-export const fetchProfileData = createAsyncThunk<IProfile, void, ThunkConfig<IError>>(
+export const fetchProfileData = createAsyncThunk<IProfile, string, ThunkConfig<IError>>(
     'profile/fetchProfileData',
-    async (_, thunkAPI) => {
+    async (profileId, thunkAPI) => {
         const { extra, rejectWithValue } = thunkAPI;
         try {
-            const response = await extra.api.get<IProfile>('/profile');
+            const response = await extra.api.get<IProfile>(`/profile/${profileId}`);
 
             if (!response.data) {
                 throw new Error();

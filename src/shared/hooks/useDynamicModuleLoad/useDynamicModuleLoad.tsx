@@ -17,7 +17,7 @@ interface IUseDynamicModuleLoad {
 }
 
 export function useDynamicModuleLoad(payload: IUseDynamicModuleLoad) {
-    const { reducers, removeAfterUnmount } = payload;
+    const { reducers, removeAfterUnmount = true } = payload;
     const store = useStore() as ReduxStoreWithManager;
     const dispatch = useAppDispatch();
 

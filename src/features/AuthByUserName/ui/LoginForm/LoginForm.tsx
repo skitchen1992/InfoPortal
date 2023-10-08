@@ -27,7 +27,7 @@ const LoginForm: FC<ILoginForm> = (props) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
-    useDynamicModuleLoad({ reducers: initialReducers });
+    useDynamicModuleLoad({ reducers: initialReducers, removeAfterUnmount: false });
 
     const {
         userName, password, error, isLoading,

@@ -32,7 +32,7 @@ export const ArticleDetailsRoot = memo((props: IProps) => {
     const { id } = props;
     const dispatch = useAppDispatch();
 
-    useDynamicModuleLoad({ reducers: initialReducers, removeAfterUnmount: true });
+    useDynamicModuleLoad({ reducers: initialReducers });
 
     const {
         data,

@@ -16,6 +16,7 @@ export interface IErrorForm {
     [key: string]: IErrorField | undefined
 }
 export interface IProfile {
+    id?: string
     first_name?: string,
     last_name?: string,
     age?: string,

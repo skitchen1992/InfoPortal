@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { getProfileData, getProfileState } from 'entities/Profile';
 import { AppState } from 'app/providers/StoreProvider';
+import { getUserAuthData } from 'entities/User';
 
 export interface IInfo {
     label: string;
@@ -27,16 +28,23 @@ const getHasError = createSelector(
     (errorsForm) => Boolean(Object.values(errorsForm).find((error) => error?.error)),
 );
 
+const getIsEdit = createSelector(
+    [getUserAuthData, getProfileData],
+    (authData, profileData) => authData?.id === profileData?.id,
+);
+
 export default createSelector([
     getProfileData,
     getProfileState,
     getInfoList,
     getHasError,
+    getIsEdit,
 ], (
     profile,
     state,
     infoList,
     hasError,
+    isEdit,
 ) => ({
     isLoading: state!.isLoading,
     hasData: state!.hasData,
@@ -45,4 +53,5 @@ export default createSelector([
     profile,
     infoList,
     hasError,
+    isEdit,
 }));

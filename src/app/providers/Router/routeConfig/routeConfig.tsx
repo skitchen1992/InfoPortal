@@ -10,6 +10,10 @@ export type IArticleParams = {
     articleId?: string;
 }
 
+export type IProfileParams = {
+    profileId?: string;
+}
+
 export type AppRouterProps = RouteProps & {
     authOnly?: boolean;
 }
@@ -25,8 +29,8 @@ export enum APP_ROUTES {
 export const RoutePath: Record<APP_ROUTES, string> = {
     [APP_ROUTES.MAIN]: '/',
     [APP_ROUTES.ABOUT]: '/about',
-    [APP_ROUTES.PROFILE]: '/profile',
-    [APP_ROUTES.ARTICLE_DETAILS]: '/article_details', // + : articleId
+    [APP_ROUTES.PROFILE]: '/profile', // + : profileId
+    [APP_ROUTES.ARTICLE_DETAILS]: '/articles', // + : articleId
     [APP_ROUTES.ARTICLES]: '/articles',
     [APP_ROUTES.NOT_FOUND]: '*',
 };
@@ -41,7 +45,7 @@ export const routeConfig: Record<APP_ROUTES, AppRouterProps> = {
         element: <AboutPage />,
     },
     [APP_ROUTES.PROFILE]: {
-        path: RoutePath.profile,
+        path: `${RoutePath.profile}/:profileId`,
         element: <ProfilePage />,
         authOnly: true,
     },

@@ -17,6 +17,8 @@
   "label.cancel": "Cancel",
   "label.save": "Save",
   "label.comments": "Comments",
+  "label.sent": "Sent",
+  "label.enter_comment_text": "Enter comment text",
   "label.error": "Something went wrong",
   "label.error.user_not_found": "User not found"
 }
