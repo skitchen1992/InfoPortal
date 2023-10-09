@@ -2,10 +2,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import React from 'react';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
-import { ISideBarLinkList } from 'widgets/SideBar/model/LinkList';
 import { useAppSelector } from 'app/providers/StoreProvider';
 import { getUserAuthData } from 'entities/User';
 import cls from './SideBarItem.module.scss';
+import { ISideBarLinkList } from '../../model/types/sidebar';
 
 interface IProps {
     item: ISideBarLinkList
