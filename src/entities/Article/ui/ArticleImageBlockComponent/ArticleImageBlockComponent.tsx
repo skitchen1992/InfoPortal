@@ -2,11 +2,11 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { Typography } from 'shared/ui/Typography/Typography';
 import cls from './ArticleImageBlockComponent.module.scss';
-import { ArticleImageBlock } from '../../model/types/article';
+import { IArticleImageBlock } from '../../model/types/IArticle';
 
 interface ArticleImageBlockComponentProps {
     className?: string;
-    block: ArticleImageBlock;
+    block: IArticleImageBlock;
 }
 
 export const ArticleImageBlockComponent = memo((props: ArticleImageBlockComponentProps) => {

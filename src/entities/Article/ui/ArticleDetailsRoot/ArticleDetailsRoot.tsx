@@ -18,7 +18,7 @@ import cls from './ArticleDetailsRoot.module.scss';
 import {
     articleDetailsSelector,
 } from '../../model/selectors/articleDetails';
-import { ArticleBlock, ARTICLE_BLOCK_TYPE } from '../../model/types/article';
+import { ArticleBlock, ARTICLE_BLOCK_TYPE } from '../../model/types/IArticle';
 
 interface IProps {
     id?: string;

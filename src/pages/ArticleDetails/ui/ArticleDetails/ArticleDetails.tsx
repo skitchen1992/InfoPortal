@@ -1,13 +1,15 @@
 import { FC, memo, useCallback } from 'react';
 import { ArticleDetailsRoot } from 'entities/Article';
-import { useParams } from 'react-router-dom';
-import { IArticleParams } from 'app/providers/Router/routeConfig/routeConfig';
+import { useNavigate, useParams } from 'react-router-dom';
+import { IArticleParams, RoutePath } from 'app/providers/Router/routeConfig/routeConfig';
 import { CommentList } from 'entities/Comment';
 import { useDynamicModuleLoad } from 'shared/hooks';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'app/providers/StoreProvider';
 import { AddCommentForm } from 'features/addCommentForm';
+import { Button } from 'shared/ui/Button/Button';
+import { useTranslation } from 'react-i18next';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import {
     fetchCommentsByArticleId,
@@ -22,6 +24,8 @@ const ArticleDetails: FC = () => {
     const { articleId } = useParams<IArticleParams>();
 
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const { t } = useTranslation('article-details');
 
     useDynamicModuleLoad({ reducers: initialReducers });
 
@@ -33,13 +37,19 @@ const ArticleDetails: FC = () => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
 
+    const onBackToList = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
+
     return (
         <>
+            <Button onClick={onBackToList}>
+                {t('label.back_to_articles')}
+            </Button>
             <ArticleDetailsRoot id={articleId} />
             <div style={{ marginTop: '24px' }}>
                 <AddCommentForm onSendComment={onSendComment} />
             </div>
-
             <CommentList />
         </>
     );

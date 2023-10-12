@@ -2,11 +2,11 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
 import { Code } from 'shared/ui/Code/Code';
 import cls from './ArticleCodeBlockComponent.module.scss';
-import { ArticleCodeBlock } from '../../model/types/article';
+import { IArticleCodeBlock } from '../../model/types/IArticle';
 
 interface ArticleCodeBlockComponentProps {
     className?: string;
-    block: ArticleCodeBlock;
+    block: IArticleCodeBlock;
 }
 
 export const ArticleCodeBlockComponent = memo((props: ArticleCodeBlockComponentProps) => {

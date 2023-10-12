@@ -1,7 +1,7 @@
-import { Article } from './Article';
+import { IArticle } from './IArticle';
 
 export interface IArticleDetailsState {
-    data: Nullable<Article>
+    data: Nullable<IArticle>
     hasData: boolean,
     error: Nullable<string>
     isLoading: boolean;
