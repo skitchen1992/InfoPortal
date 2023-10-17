@@ -11,6 +11,7 @@ import { NavigateOptions } from 'react-router';
 import { IArticleDetailsState } from 'entities/Article';
 import { ArticleDetailsCommentsState } from 'pages/ArticleDetails';
 import { AddCommentFormState } from 'features/addCommentForm';
+import { ArticlesPageState } from 'pages/Articles';
 
 export interface AppState {
     user: IUserState;
@@ -19,9 +20,11 @@ export interface AppState {
 
     // async reducers
     login?: ILoginState;
+    articlesPage?: ArticlesPageState
     articleDetails?: IArticleDetailsState
     articleDetailsComments?: ArticleDetailsCommentsState
     addCommentForm?: AddCommentFormState;
+
 }
 
 export type AppStateKey = keyof AppState;

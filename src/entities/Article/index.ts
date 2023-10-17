@@ -1,5 +1,6 @@
 export { ArticleDetailsRoot } from './ui/ArticleDetailsRoot/ArticleDetailsRoot';
 export { ArticleList } from './ui/ArticleList/ArticleList';
+export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
 
 export { articleDetailsReducer } from './model/slice/articleDetailsSlice';
 

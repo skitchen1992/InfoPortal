@@ -1,3 +1,14 @@
 .root {
     height: 100%;
 }
+
+.noData {
+    align-items: flex-start;
+}
+
+.skeleton {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+}

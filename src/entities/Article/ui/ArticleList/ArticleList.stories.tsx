@@ -1,6 +1,5 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
 import { ArticleList } from './ArticleList';
 import { IArticle, ARTICLE_VIEW } from '../../model/types/IArticle';
 
@@ -107,14 +106,12 @@ const article = {
 export const LoadingBig = Template.bind({});
 LoadingBig.args = {
     articles: [],
-    isLoading: true,
     view: ARTICLE_VIEW.BIG,
 };
 
 export const LoadingSmall = Template.bind({});
 LoadingSmall.args = {
     articles: [],
-    isLoading: true,
     view: ARTICLE_VIEW.SMALL,
 };
 
@@ -126,7 +123,6 @@ ListSmall.args = {
             ...article,
             id: String(index),
         })),
-    isLoading: false,
     view: ARTICLE_VIEW.SMALL,
 };
 
@@ -138,6 +134,5 @@ ListBig.args = {
             ...article,
             id: String(index),
         })),
-    isLoading: false,
     view: ARTICLE_VIEW.BIG,
 };
