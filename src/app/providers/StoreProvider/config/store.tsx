@@ -7,6 +7,7 @@ import { createReducerManager } from 'app/providers/StoreProvider/config/reducer
 import { appReducer } from 'app/slice/appSlice';
 import { profileReducer } from 'entities/Profile';
 import { API } from 'shared/api/api';
+import { saveScrollReducer } from 'features/SaveScroll';
 import { AppState, ThunkExtraArguments } from './appState';
 
 export function createReduxStore(
@@ -18,6 +19,7 @@ export function createReduxStore(
         user: userReducer,
         app: appReducer,
         profile: profileReducer,
+        savedScroll: saveScrollReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

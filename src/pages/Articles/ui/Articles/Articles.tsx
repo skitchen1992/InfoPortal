@@ -6,16 +6,12 @@ import { useInitialEffect } from 'shared/hooks';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
 import { NoDataContainer } from 'shared/ui/NoDataContainer/NoDataContainer';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItemSkeleton/ArticleListItemSkeleton';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlesPage } from 'pages/Articles/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from 'pages/Articles/model/services/initArticlesPage/initArticlesPage';
 import { getArticlesStateSelector } from '../../model/selectors/articlesPageSelectors';
 import { articlesPageActions, articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import cls from './Articles.module.scss';
-
-interface IProps {
-    className?: string
-}
 
 const getSkeletons = (view: ARTICLE_VIEW) => new Array(view === ARTICLE_VIEW.SMALL ? 9 : 3)
     .fill(0)
@@ -26,6 +22,10 @@ const getSkeletons = (view: ARTICLE_VIEW) => new Array(view === ARTICLE_VIEW.SMA
 const reducers: ReducersList = {
     articlesPage: articlesPageReducer,
 };
+
+interface IProps {
+    className?: string
+}
 const Articles: FC<IProps> = (props) => {
     const { className } = props;
 

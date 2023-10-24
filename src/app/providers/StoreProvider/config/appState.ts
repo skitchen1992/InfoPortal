@@ -10,10 +10,12 @@ import { IArticleDetailsState } from 'entities/Article';
 import { ArticleDetailsCommentsState } from 'pages/ArticleDetails';
 import { AddCommentFormState } from 'features/addCommentForm';
 import { ArticlesPageState } from 'pages/Articles';
+import { ISaveScrollState } from 'features/SaveScroll';
 
 export interface AppState {
     user: IUserState;
     app: IAppState;
+    savedScroll: ISaveScrollState
     profile: IProfileState;
 
     // async reducers

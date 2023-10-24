@@ -10,7 +10,7 @@ import { ProfileCard } from 'entities/Profile/ui/ProfileCard/ProfileCard';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import { IProfileParams } from 'app/providers/Router/routeConfig/routeConfig';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import selector from './selector';
 
 const initialReducers: ReducersList = {
@@ -21,7 +21,7 @@ const Profile = () => {
     const dispatch = useAppDispatch();
     const { profileId } = useParams<IProfileParams>();
 
-    useDynamicModuleLoad({ reducers: initialReducers });
+    useDynamicModuleLoad({ reducers: initialReducers, removeAfterUnmount: false });
 
     const {
         isLoading, hasData, error, profile,
