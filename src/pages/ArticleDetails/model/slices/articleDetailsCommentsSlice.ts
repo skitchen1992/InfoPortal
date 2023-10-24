@@ -6,7 +6,7 @@ import { IComment } from 'entities/Comment';
 import { AppState } from 'app/providers/StoreProvider';
 import {
     fetchCommentsByArticleId,
-} from 'pages/ArticleDetails/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+} from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { ArticleDetailsCommentsState } from '../types/ArticleDetailsCommentsState';
 
 const commentsAdapter = createEntityAdapter<IComment>({
@@ -39,7 +39,7 @@ const articleDetailsCommentsSlice = createSlice({
                 action: PayloadAction<IComment[]>,
             ) => {
                 state.isLoading = false;
-                state.hasData = Boolean(action.payload.length);
+                state.hasData = Boolean(state.ids.length) || Boolean(action.payload.length);
                 commentsAdapter.setAll(state, action.payload);
             })
             .addCase(fetchCommentsByArticleId.rejected, (state, action) => {

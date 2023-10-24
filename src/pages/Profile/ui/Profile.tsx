@@ -10,6 +10,7 @@ import { ProfileCard } from 'entities/Profile/ui/ProfileCard/ProfileCard';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import { IProfileParams } from 'app/providers/Router/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import selector from './selector';
 
 const initialReducers: ReducersList = {
@@ -50,19 +51,21 @@ const Profile = () => {
     }, [dispatch]);
 
     return (
-        <NoDataContainer isLoading={isLoading} hasData={hasData} error={error} loaderSize="large">
-            <ProfileCard
-                profile={profile}
-                infoList={infoList}
-                readOnly={readOnly}
-                onEdit={onEdit}
-                onCancel={onCancel}
-                onSave={onSave}
-                onChangeFormField={onChangeFormField}
-                hasError={hasError}
-                isEdit={isEdit}
-            />
-        </NoDataContainer>
+        <Page>
+            <NoDataContainer isLoading={isLoading} hasData={hasData} error={error} loaderSize="large">
+                <ProfileCard
+                    profile={profile}
+                    infoList={infoList}
+                    readOnly={readOnly}
+                    onEdit={onEdit}
+                    onCancel={onCancel}
+                    onSave={onSave}
+                    onChangeFormField={onChangeFormField}
+                    hasError={hasError}
+                    isEdit={isEdit}
+                />
+            </NoDataContainer>
+        </Page>
     );
 };
 

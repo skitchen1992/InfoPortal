@@ -3,6 +3,7 @@ import { AppState } from 'app/providers/StoreProvider';
 import { ARTICLE_VIEW, IArticle } from 'entities/Article';
 import { ArticlesPageState } from 'pages/Articles';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/consts/localStorage';
+import { BIG_PAGE_LIMIT, SMALL_PAGE_LIMIT } from '../../model/consts/consts';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 
 const articlesAdapter = createEntityAdapter<IArticle>({
@@ -22,14 +23,22 @@ const articlesPageSlice = createSlice({
         ids: [],
         entities: {},
         view: ARTICLE_VIEW.SMALL,
+        page: 1,
+        limit: 0,
+        hasMore: true,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ARTICLE_VIEW>) => {
             state.view = action.payload;
             localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, action.payload);
         },
+        setPage: (state, action: PayloadAction<number>) => {
+            state.page = action.payload;
+        },
         initState: (state) => {
-            state.view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ARTICLE_VIEW;
+            const view = localStorage.getItem(ARTICLES_VIEW_LOCALSTORAGE_KEY) as ARTICLE_VIEW;
+            state.view = view;
+            state.limit = view === ARTICLE_VIEW.BIG ? SMALL_PAGE_LIMIT : BIG_PAGE_LIMIT;
         },
     },
     extraReducers: (builder) => {
@@ -44,12 +53,14 @@ const articlesPageSlice = createSlice({
                 action: PayloadAction<IArticle[]>,
             ) => {
                 state.isLoading = false;
-                state.hasData = Boolean(action.payload.length);
-                articlesAdapter.setAll(state, action.payload);
+                state.hasData = Boolean(state.ids.length) || Boolean(action.payload.length);
+                articlesAdapter.addMany(state, action.payload);
+                state.hasMore = Boolean(action.payload.length);
             })
             .addCase(fetchArticlesList.rejected, (state, action) => {
                 state.isLoading = false;
                 state.hasData = false;
+                state.hasMore = false;
                 state.error = action.payload || 'error';
             });
     },

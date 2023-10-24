@@ -10,6 +10,7 @@ import { useAppDispatch } from 'app/providers/StoreProvider';
 import { AddCommentForm } from 'features/addCommentForm';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
+import { Page } from 'shared/ui/Page/Page';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import {
     fetchCommentsByArticleId,
@@ -42,7 +43,7 @@ const ArticleDetails: FC = () => {
     }, [navigate]);
 
     return (
-        <>
+        <Page>
             <Button onClick={onBackToList}>
                 {t('label.back_to_articles')}
             </Button>
@@ -51,7 +52,7 @@ const ArticleDetails: FC = () => {
                 <AddCommentForm onSendComment={onSendComment} />
             </div>
             <CommentList />
-        </>
+        </Page>
     );
 };
 

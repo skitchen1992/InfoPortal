@@ -51,7 +51,7 @@ export const NoDataContainer: FC<IProps> = (props) => {
         <div className={classNames(cls.root, {}, [className])}>
             {isLoading && loaderToRender}
 
-            {!isLoading && !error && children}
+            {!isLoading && !error && hasData && children}
 
             {!isLoading && !hasData && !error && (noDataToRender) }
 

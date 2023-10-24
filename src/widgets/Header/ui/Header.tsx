@@ -45,7 +45,7 @@ export const Header: FC<IProps> = (props) => {
     }, [dispatch, collapsed]);
 
     return (
-        <div className={classNames(cls.root, {}, [className])}>
+        <header className={classNames(cls.root, {}, [className])}>
             <IconButton data-testid="SideBarButton" onClick={onButtonClick}><List /></IconButton>
 
             <div className={cls.actions}>
@@ -56,6 +56,6 @@ export const Header: FC<IProps> = (props) => {
                 </Button>
                 {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
             </div>
-        </div>
+        </header>
     );
 };

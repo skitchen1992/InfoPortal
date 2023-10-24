@@ -15,19 +15,21 @@ export const CommentList = memo(() => {
     const { t } = useTranslation();
 
     return (
-        <NoDataContainer isLoading={isLoading} hasData={hasData} error={error} loaderSize="large">
-            <div className={cls.root}>
-                <Typography variant="h5" className={cls.title}>
-                    {t('label.comments')}
-                </Typography>
-                {comments?.map((comment) => (
-                    <CommentCard
-                        key={comment.id}
-                        isLoading={isLoading}
-                        comment={comment}
-                    />
-                ))}
-            </div>
-        </NoDataContainer>
+        <div className={cls.root}>
+            <Typography variant="h5">
+                {t('label.comments')}
+            </Typography>
+            <NoDataContainer isLoading={isLoading} hasData={hasData} error={error} loaderSize="large">
+                <div className={cls.commentsList}>
+                    {comments?.map((comment) => (
+                        <CommentCard
+                            key={comment.id}
+                            isLoading={isLoading}
+                            comment={comment}
+                        />
+                    ))}
+                </div>
+            </NoDataContainer>
+        </div>
     );
 });

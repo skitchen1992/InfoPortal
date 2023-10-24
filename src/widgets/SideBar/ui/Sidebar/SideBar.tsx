@@ -9,8 +9,8 @@ export const SideBar: FC = () => {
     const { collapsed, sideBarItems } = useAppSelector(selector);
 
     return (
-        <div data-testid="SideBar" className={classNames(cls.root, { [cls.collapsed]: collapsed }, [])}>
-            <div className={classNames(cls.links, {}, [])}>
+        <menu data-testid="SideBar" className={classNames(cls.root, { [cls.collapsed]: collapsed }, [])}>
+            <li className={classNames(cls.links, {}, [])}>
                 {sideBarItems.map((item) => (
                     <SideBarItem
                         key={item.label}
@@ -18,7 +18,7 @@ export const SideBar: FC = () => {
                         collapsed={collapsed}
                     />
                 ))}
-            </div>
-        </div>
+            </li>
+        </menu>
     );
 };
