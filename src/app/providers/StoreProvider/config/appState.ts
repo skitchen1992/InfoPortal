@@ -6,8 +6,6 @@ import {
 import { IAppState } from 'app/slice/appSlice';
 import { IProfileState } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
-import { To } from 'history';
-import { NavigateOptions } from 'react-router';
 import { IArticleDetailsState } from 'entities/Article';
 import { ArticleDetailsCommentsState } from 'pages/ArticleDetails';
 import { AddCommentFormState } from 'features/addCommentForm';
@@ -28,12 +26,15 @@ export interface AppState {
 }
 
 export type AppStateKey = keyof AppState;
+export type MountedReducers = OptionalRecord<AppStateKey, boolean>;
 
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<AppState>;
     reduce: (state: AppState, action: AnyAction) => CombinedState<AppState>;
     add: (key: AppStateKey, reducer: Reducer) => void;
     remove: (key: AppStateKey) => void;
+
+    getMountedReducers: () => MountedReducers
 }
 
 export interface ReduxStoreWithManager extends EnhancedStore<AppState> {
@@ -42,7 +43,6 @@ export interface ReduxStoreWithManager extends EnhancedStore<AppState> {
 
 export interface ThunkExtraArguments {
     api: AxiosInstance;
-    navigate?: (to: To, options?: NavigateOptions) => void,
 }
 
 export interface ThunkConfig<T> {

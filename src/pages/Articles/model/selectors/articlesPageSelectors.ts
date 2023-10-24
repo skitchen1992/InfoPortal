@@ -11,6 +11,7 @@ export const getArticlesPageView = (state: AppState) => state.articlesPage?.view
 export const getArticlesPageNumber = (state: AppState) => state.articlesPage?.page || 1;
 export const getArticlesPageLimit = (state: AppState) => state.articlesPage?.limit || BIG_PAGE_LIMIT;
 export const getArticlesPageHasMore = (state: AppState) => state.articlesPage?.hasMore;
+export const getArticlesPageInited = (state: AppState) => state.articlesPage?._inited || false;
 
 export const getArticlesStateSelector = createSelector([
     getArticles.selectAll,
@@ -20,6 +21,7 @@ export const getArticlesStateSelector = createSelector([
     getArticlesPageView,
     getArticlesPageHasMore,
     getArticlesPageNumber,
+    getArticlesPageInited,
 ], (
     articles,
     isLoading,

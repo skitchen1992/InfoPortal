@@ -31,3 +31,7 @@ interface IOption<V = any, L = any> {
 }
 
 type Nullable<T> = T | null;
+
+type OptionalRecord <K extends keyof any, T> = {
+    [P in K]?: T
+}

@@ -8,7 +8,7 @@ import { NoDataContainer } from 'shared/ui/NoDataContainer/NoDataContainer';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItemSkeleton/ArticleListItemSkeleton';
 import { Page } from 'shared/ui/Page/Page';
 import { fetchNextArticlesPage } from 'pages/Articles/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import { initArticlesPage } from 'pages/Articles/model/services/initArticlesPage/initArticlesPage';
 import { getArticlesStateSelector } from '../../model/selectors/articlesPageSelectors';
 import { articlesPageActions, articlesPageReducer } from '../../model/slices/articlesPageSlice';
 import cls from './Articles.module.scss';
@@ -39,11 +39,10 @@ const Articles: FC<IProps> = (props) => {
         pageView,
     } = useAppSelector(getArticlesStateSelector);
 
-    useDynamicModuleLoad({ reducers });
+    useDynamicModuleLoad({ reducers, removeAfterUnmount: false });
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesList({ page: 1 }));
+        dispatch(initArticlesPage());
     });
 
     const onChangeView = useCallback((view: ARTICLE_VIEW) => {

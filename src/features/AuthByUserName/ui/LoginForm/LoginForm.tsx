@@ -7,6 +7,8 @@ import { Typography } from 'shared/ui/Typography/Typography';
 import { useDynamicModuleLoad } from 'shared/hooks';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
+import { useNavigate } from 'react-router-dom';
+import { RoutePath } from 'app/providers/Router/routeConfig/routeConfig';
 import { loginByUserName } from '../../model/services/loginByUserName/loginByUserName';
 import selector from '../../model/selectors/getLoginState/getLoginState';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
@@ -26,6 +28,7 @@ const LoginForm: FC<ILoginForm> = (props) => {
 
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useDynamicModuleLoad({ reducers: initialReducers, removeAfterUnmount: false });
 
@@ -46,8 +49,9 @@ const LoginForm: FC<ILoginForm> = (props) => {
 
         if (loginByUserName.fulfilled.match(result)) {
             onClose();
+            navigate(`${RoutePath.profile}/${result.payload.id}`);
         }
-    }, [dispatch, userName, password, onClose]);
+    }, [dispatch, userName, password, onClose, navigate]);
 
     return (
         <div className={classNames(cls.root, {}, [className])}>

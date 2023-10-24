@@ -22,9 +22,14 @@ export function useDynamicModuleLoad(payload: IUseDynamicModuleLoad) {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
+        const mountedReducers = store.reducerManager.getMountedReducers();
+
         Object.entries(reducers).forEach(([name, reducer]) => {
-            store.reducerManager.add(name as AppStateKey, reducer);
-            dispatch({ type: `@INIT_${name}_REDUCER` });
+            const mounted = mountedReducers[name as AppStateKey];
+            if (!mounted) {
+                store.reducerManager.add(name as AppStateKey, reducer);
+                dispatch({ type: `@INIT_${name}_REDUCER` });
+            }
         });
 
         return () => {
