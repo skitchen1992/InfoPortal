@@ -17,7 +17,7 @@ export const ArticleTextBlockComponent = memo((props: ArticleTextBlockComponentP
             <Typography>
                 {block.title}
             </Typography>
-            {block.paragraphs.map((paragraph, index) => (
+            {block.paragraphs.map((paragraph) => (
                 <Typography key={paragraph}>
                     {paragraph}
                 </Typography>
