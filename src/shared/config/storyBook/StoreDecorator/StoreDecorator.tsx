@@ -7,16 +7,15 @@ import { appReducer } from 'app/slice/appSlice';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import { articleDetailsReducer } from 'entities/Article';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentFormSlice';
-import { articleDetailsCommentsReducer } from 'pages/ArticleDetails/model/slices/articleDetailsCommentsSlice';
+import { articleDetailsPageReducer } from 'pages/ArticleDetails/model/slices';
 
 const defaultAsyncReducers: ReducersList = {
     login: loginReducer,
     profile: profileReducer,
     app: appReducer,
     articleDetails: articleDetailsReducer,
-    articleDetailsComments: articleDetailsCommentsReducer,
     addCommentForm: addCommentFormReducer,
-
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 export const StoreDecorator = (state: DeepPartial<AppState>, asyncReducers?: ReducersList) => (StoryComponent: Story) => (

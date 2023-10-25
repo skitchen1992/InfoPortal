@@ -11,9 +11,11 @@ import { fetchNextArticlesPage } from 'pages/Articles/model/services/fetchNextAr
 import { initArticlesPage } from 'pages/Articles/model/services/initArticlesPage/initArticlesPage';
 import { ArticlesFilters } from 'pages/Articles/ui/ArticlesFilters/ArticlesFilters';
 import { useSearchParams } from 'react-router-dom';
+import {
+    articleDetailsPageRecommendationsReducer,
+} from 'pages/ArticleDetails/model/slices/articleDetailsPageRecommendationsSlice';
 import { getArticlesStateSelector } from '../../model/selectors/articlesPageSelectors';
 import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
-
 import cls from './Articles.module.scss';
 
 const getSkeletons = (view: ARTICLE_VIEW) => new Array(view === ARTICLE_VIEW.SMALL ? 9 : 3)
@@ -24,6 +26,7 @@ const getSkeletons = (view: ARTICLE_VIEW) => new Array(view === ARTICLE_VIEW.SMA
 
 const reducers: ReducersList = {
     articlesPage: articlesPageReducer,
+    articleDetailsRecommendations: articleDetailsPageRecommendationsReducer,
 };
 
 interface IProps {

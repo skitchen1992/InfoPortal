@@ -3,18 +3,18 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ARTICLE_SORT_FIELD, ARTICLE_VIEW, ArticleViewSelector } from 'entities/Article';
 import { articlesPageActions } from 'pages/Articles/model/slices/articlesPageSlice';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
-import {
-    getArticlesFiltersSelector,
-} from 'pages/Articles/model/selectors/articlesPageSelectors';
 import { Input } from 'shared/ui/Input/Input';
 import { ArticlesSortSelector } from 'entities/Article/ui/ArticlesSortSelector/ArticlesSortSelector';
 import { SortOrder } from 'shared/types';
 import { batch } from 'react-redux';
-import { fetchArticlesList } from 'pages/Articles/model/services/fetchArticlesList/fetchArticlesList';
 import { useDebounce } from 'shared/hooks/useDebounce/useDebounce';
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
 import { ARTICLE_TYPE } from 'entities/Article/model/types/IArticle';
 import { useTranslation } from 'react-i18next';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import {
+    getArticlesFiltersSelector,
+} from '../../model/selectors/articlesPageSelectors';
 import cls from './ArticlesFilters.module.scss';
 
 interface IProps {

@@ -6,11 +6,12 @@ import {
 import { IAppState } from 'app/slice/appSlice';
 import { IProfileState } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
-import { IArticleDetailsState } from 'entities/Article';
-import { ArticleDetailsCommentsState } from 'pages/ArticleDetails';
+import { ArticleDetailsRecommendationsState } from 'pages/ArticleDetails';
 import { AddCommentFormState } from 'features/addCommentForm';
 import { ArticlesPageState } from 'pages/Articles';
 import { ISaveScrollState } from 'features/SaveScroll';
+import { ArticleDetailsPageState } from 'pages/ArticleDetails/model/types';
+import { IArticleDetailsState } from 'entities/Article';
 
 export interface AppState {
     user: IUserState;
@@ -22,9 +23,9 @@ export interface AppState {
     login?: ILoginState;
     articlesPage?: ArticlesPageState
     articleDetails?: IArticleDetailsState
-    articleDetailsComments?: ArticleDetailsCommentsState
+    articleDetailsRecommendations?: ArticleDetailsRecommendationsState
     addCommentForm?: AddCommentFormState;
-
+    articleDetailsPage?: ArticleDetailsPageState
 }
 
 export type AppStateKey = keyof AppState;

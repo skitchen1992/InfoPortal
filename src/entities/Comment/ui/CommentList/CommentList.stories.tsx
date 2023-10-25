@@ -11,7 +11,7 @@ export default {
     },
 } as ComponentMeta<typeof CommentList>;
 
-const Template: ComponentStory<typeof CommentList> = () => <CommentList />;
+const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
@@ -19,12 +19,12 @@ Normal.args = {
         {
             id: '1',
             text: 'hello world',
-            user: { id: '1', username: 'Vasya' },
+            user: { id: '1', userName: 'Vasya' },
         },
         {
             id: '2',
             text: 'Comment 2',
-            user: { id: '1', username: 'Petya' },
+            user: { id: '1', userName: 'Petya' },
         },
     ],
 };

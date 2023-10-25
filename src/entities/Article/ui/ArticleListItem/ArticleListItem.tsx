@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
 import { Card } from 'shared/ui/Card/Card';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button } from 'shared/ui/Button/Button';
@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'app/providers/Router/routeConfig/routeConfig';
 import { Eye } from 'phosphor-react';
 import { Typography } from 'shared/ui/Typography/Typography';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
 import cls from './ArticleListItem.module.scss';
 import {
     IArticle, IArticleTextBlock, ARTICLE_VIEW, ARTICLE_BLOCK_TYPE,
@@ -18,16 +19,14 @@ interface ArticleListItemProps {
     className?: string;
     article: IArticle;
     view: ARTICLE_VIEW;
+    target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-    const { className, article, view } = props;
+    const {
+        className, article, view, target,
+    } = props;
     const { t } = useTranslation('articles');
-    const navigate = useNavigate();
-
-    const onOpenArticle = useCallback(() => {
-        navigate(`${RoutePath.article_details}/${article.id}`);
-    }, [article.id, navigate]);
 
     const types = (
         <Typography className={cls.types}>
@@ -69,19 +68,24 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
                     )}
                     <div className={cls.footer}>
-                        <Button onClick={onOpenArticle}>
-                            {t('label.read_more')}
-                        </Button>
+                        <AppLink target={target} to={`${RoutePath.article_details}/${article.id}`}>
+                            <Button>
+                                {t('label.read_more')}
+                            </Button>
+                        </AppLink>
                         {views}
                     </div>
                 </Card>
             </div>
         );
     }
-
     return (
-        <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-            <Card className={cls.card} onClick={onOpenArticle}>
+        <AppLink
+            target={target}
+            to={`${RoutePath.article_details}/${article.id}`}
+            className={classNames('', {}, [className, cls[view]])}
+        >
+            <Card className={cls.card}>
                 <div className={cls.imageWraxpper}>
                     <img alt={article.title} src={article.img} className={cls.img} />
                     <Typography variant="body1">
@@ -96,6 +100,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     {article.title}
                 </Typography>
             </Card>
-        </div>
+        </AppLink>
     );
 });
