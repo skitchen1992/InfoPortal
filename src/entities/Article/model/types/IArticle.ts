@@ -31,9 +31,16 @@ export interface IArticleTextBlock extends IArticleBlockBase {
 export type ArticleBlock = IArticleCodeBlock | IArticleImageBlock | IArticleTextBlock;
 
 export enum ARTICLE_TYPE {
+    ALL = 'ALL',
     IT = 'IT',
     SCIENCE = 'SCIENCE',
     ECONOMICS = 'ECONOMICS'
+}
+
+export enum ARTICLE_SORT_FIELD {
+    VIEWS = 'views',
+    TITLE = 'title',
+    CREATED = 'created'
 }
 
 export enum ARTICLE_VIEW {

@@ -20,5 +20,10 @@
   "label.sent": "Sent",
   "label.enter_comment_text": "Enter comment text",
   "label.error": "Something went wrong",
+  "label.ascending": "Ascending",
+  "label.descending": "Descending",
+  "label.date_created": "Date created",
+  "label.title": "Title",
+  "label.views": "Views",
   "label.error.user_not_found": "User not found"
 }

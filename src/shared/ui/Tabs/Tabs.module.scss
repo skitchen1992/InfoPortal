@@ -1,0 +1,14 @@
+.root {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.tab {
+    cursor: pointer;
+}
+
+.selected {
+    color: var(--text-fig);
+    cursor: auto;
+}

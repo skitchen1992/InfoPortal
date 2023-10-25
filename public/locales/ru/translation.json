@@ -20,5 +20,10 @@
   "label.sent": "Отправить",
   "label.enter_comment_text": "Введите текст комментария",
   "label.error": "Что то пошло не так",
+  "label.ascending": "По возрастанию",
+  "label.descending": "По убыванию",
+  "label.date_created": "По дате создания",
+  "label.title": "По названию",
+  "label.views": "По просмотрам",
   "label.error.user_not_found": "Пользователь не найден"
 }

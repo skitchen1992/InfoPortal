@@ -2,18 +2,18 @@ import { ChangeEvent, FC, useMemo } from 'react';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
 
-interface IProps {
-    onChange?: (event: string, name: string | undefined) => void;
+interface IProps <T extends string> {
+    onChange?: (value: T, name?: string) => void;
     size?: 'small' | 'large' | 'medium'
-    options?: IOption<string, string>[];
+    options?: IOption<T, string>[];
     className?: string
-    value?: string;
+    value?: T;
     name?: string;
     fullWidth?: boolean;
     disabled?: boolean
 }
 
-export const Select: FC<IProps> = (props) => {
+export const Select = <T extends string> (props: IProps<T>) => {
     const {
         className,
         options = [],
@@ -34,7 +34,7 @@ export const Select: FC<IProps> = (props) => {
     };
 
     const onChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => {
-        onChange?.(event.target.value, name);
+        onChange?.(event.target.value as T, name);
     };
 
     const optionsList = useMemo(() => options.map((option) => (
@@ -51,5 +51,6 @@ export const Select: FC<IProps> = (props) => {
         <select disabled={disabled} className={classNames(cls.root, mods, [className])} value={value} onChange={onChangeHandler}>
             {optionsList}
         </select>
+
     );
 };

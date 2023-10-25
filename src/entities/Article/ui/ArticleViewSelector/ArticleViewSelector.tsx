@@ -32,13 +32,16 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
         },
     ];
     const onClick = (newView: ARTICLE_VIEW) => () => {
-        onViewClick?.(newView);
+        if (newView !== view) {
+            onViewClick?.(newView);
+        }
     };
 
     return (
         <div className={classNames(cls.root, {}, [className])}>
             {viewTypes.map((viewType) => (
                 <IconButton
+                    className={viewType.view === view ? cls.iconBtn : undefined}
                     key={viewType.view}
                     onClick={onClick(viewType.view)}
                 >

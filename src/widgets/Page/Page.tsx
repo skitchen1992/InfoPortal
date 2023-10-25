@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
 import { getSavedScrollByPath, saveScrollActions } from 'features/SaveScroll';
 import { useLocation } from 'react-router-dom';
 import { useThrottle } from 'shared/hooks/useThrottle/useThrottle';
+import { useDebounce } from 'shared/hooks/useDebounce/useDebounce';
 import cls from './Page.module.scss';
 
 interface PageProps {
@@ -46,7 +47,7 @@ export const Page = memo((props: PageProps) => {
             onScroll={onScroll}
         >
             {children}
-            <div ref={triggerRef} />
+            {onScrollEnd ? <div className={cls.trigger} ref={triggerRef} /> : null}
         </section>
     );
 });

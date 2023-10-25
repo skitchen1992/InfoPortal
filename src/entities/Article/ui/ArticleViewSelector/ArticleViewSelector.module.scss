@@ -12,3 +12,11 @@
 .icon {
     color: var(--text-fig);
 }
+
+.iconBtn {
+    cursor: auto;
+
+    &:hover {
+        background-color: var(--main-bg-color);
+    }
+}

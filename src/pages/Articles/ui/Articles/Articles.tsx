@@ -1,6 +1,6 @@
 import { FC, memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ARTICLE_VIEW, ArticleList, ArticleViewSelector } from 'entities/Article';
+import { ARTICLE_VIEW, ArticleList } from 'entities/Article';
 import { ReducersList, useDynamicModuleLoad } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import { useInitialEffect } from 'shared/hooks';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
@@ -9,8 +9,11 @@ import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItemSkel
 import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlesPage } from 'pages/Articles/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 import { initArticlesPage } from 'pages/Articles/model/services/initArticlesPage/initArticlesPage';
+import { ArticlesFilters } from 'pages/Articles/ui/ArticlesFilters/ArticlesFilters';
+import { useSearchParams } from 'react-router-dom';
 import { getArticlesStateSelector } from '../../model/selectors/articlesPageSelectors';
-import { articlesPageActions, articlesPageReducer } from '../../model/slices/articlesPageSlice';
+import { articlesPageReducer } from '../../model/slices/articlesPageSlice';
+
 import cls from './Articles.module.scss';
 
 const getSkeletons = (view: ARTICLE_VIEW) => new Array(view === ARTICLE_VIEW.SMALL ? 9 : 3)
@@ -30,6 +33,7 @@ const Articles: FC<IProps> = (props) => {
     const { className } = props;
 
     const dispatch = useAppDispatch();
+    const [searchParams] = useSearchParams();
 
     const {
         isLoading,
@@ -42,12 +46,8 @@ const Articles: FC<IProps> = (props) => {
     useDynamicModuleLoad({ reducers, removeAfterUnmount: false });
 
     useInitialEffect(() => {
-        dispatch(initArticlesPage());
+        dispatch(initArticlesPage(searchParams));
     });
-
-    const onChangeView = useCallback((view: ARTICLE_VIEW) => {
-        dispatch(articlesPageActions.setView(view));
-    }, [dispatch]);
 
     const onLoadNextPart = useCallback(() => {
         if (__PROJECT__ !== 'storybook') {
@@ -57,6 +57,7 @@ const Articles: FC<IProps> = (props) => {
 
     return (
         <Page onScrollEnd={onLoadNextPart}>
+            <ArticlesFilters />
             <NoDataContainer
                 isLoading={isLoading}
                 loader={(
@@ -67,14 +68,12 @@ const Articles: FC<IProps> = (props) => {
                 hasData={hasData}
                 error={error}
                 loaderSize="large"
+                className={cls.noData}
             >
-                <div className={cls.root}>
-                    <ArticleViewSelector view={pageView} onViewClick={onChangeView} />
-                    <ArticleList
-                        view={pageView}
-                        articles={articles}
-                    />
-                </div>
+                <ArticleList
+                    view={pageView}
+                    articles={articles}
+                />
             </NoDataContainer>
             {isLoading && (
                 <div className={classNames(cls.skeleton, {}, [className, cls[pageView]])}>
