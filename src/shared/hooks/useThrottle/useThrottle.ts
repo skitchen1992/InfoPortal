@@ -12,7 +12,9 @@ export function useThrottle(callback: (...args: any[]) => void, delay: number) {
 
     // Clear the timeout when the component unmounts.
     useEffect(() => () => {
-        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
     }, []);
 
     return useCallback((...args: any[]) => {
