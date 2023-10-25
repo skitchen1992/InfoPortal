@@ -1,3 +1,7 @@
 {
-  "label.read_more": "Читать далее..."
+  "label.read_more": "Читать далее...",
+  "label.filter_all": "Все статьи",
+  "label.filter_it": "Айти",
+  "label.filter_economics": "Экономика",
+  "label.filter_science": "Наука"
 }

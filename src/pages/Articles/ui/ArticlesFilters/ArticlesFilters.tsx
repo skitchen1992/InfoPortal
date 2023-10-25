@@ -25,7 +25,7 @@ export const ArticlesFilters: FC<IProps> = (props) => {
     const { className } = props;
 
     const dispatch = useAppDispatch();
-    const { t } = useTranslation();
+    const { t } = useTranslation('articles');
 
     const {
         pageView,
@@ -84,19 +84,19 @@ export const ArticlesFilters: FC<IProps> = (props) => {
     const typeTabs = useMemo<TabItem[]>(() => [
         {
             value: ARTICLE_TYPE.ALL,
-            content: t('Все статьи'),
+            content: t('label.filter_all'),
         },
         {
             value: ARTICLE_TYPE.IT,
-            content: t('Айти'),
+            content: t('label.filter_it'),
         },
         {
             value: ARTICLE_TYPE.ECONOMICS,
-            content: t('Экономика'),
+            content: t('label.filter_economics'),
         },
         {
             value: ARTICLE_TYPE.SCIENCE,
-            content: t('Наука'),
+            content: t('label.filter_science'),
         },
     ], [t]);
 

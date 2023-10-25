@@ -1,3 +1,7 @@
 {
-  "label.read_more": "Read more..."
+  "label.read_more": "Read more...",
+  "label.filter_all": "All",
+  "label.filter_it": "IT",
+  "label.filter_economics": "Economics",
+  "label.filter_science": "Science"
 }
