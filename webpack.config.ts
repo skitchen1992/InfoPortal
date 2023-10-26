@@ -3,6 +3,7 @@ import path from 'path';
 import { BuildEnv, BuildPaths } from './config/build/types/config';
 import { buildWebpackConfig } from './config/build/buildWebPackConfig';
 
+// const apiURL = process.env.apiURL || 'http://localhost:8000';
 export default (env: BuildEnv) => {
     const paths: BuildPaths = {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
