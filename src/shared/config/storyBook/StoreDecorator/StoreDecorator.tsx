@@ -7,7 +7,7 @@ import { appReducer } from 'app/slice/appSlice';
 import { ReducersList } from 'shared/hooks/useDynamicModuleLoad/useDynamicModuleLoad';
 import { articleDetailsReducer } from 'entities/Article';
 import { addCommentFormReducer } from 'features/addCommentForm/model/slices/addCommentFormSlice';
-import { articleDetailsPageReducer } from 'pages/ArticleDetails/model/slices';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices';
 
 const defaultAsyncReducers: ReducersList = {
     login: loginReducer,

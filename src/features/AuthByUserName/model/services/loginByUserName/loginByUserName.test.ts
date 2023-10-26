@@ -19,7 +19,7 @@ describe('loginByUserName', () => {
     });
 
     test('success login', async () => {
-        const userValue = { userName: '123', id: '1' };
+        const userValue = { username: '123', id: '1' };
 
         // mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }));
 

@@ -25,7 +25,7 @@ const article: IArticle = {
     views: 1022,
     user: {
         id: '1',
-        userName: 'Ulbi tv',
+        username: 'Ulbi tv',
     },
     createdAt: '26.02.2022',
     type: [ARTICLE_TYPE.IT],

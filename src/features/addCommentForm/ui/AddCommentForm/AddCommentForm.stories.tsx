@@ -2,6 +2,8 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { StoreDecorator } from 'shared/config/storyBook/StoreDecorator/StoreDecorator';
+import { ThemeDecorator } from 'shared/config/storyBook/ThemeDecorator/ThemeDecorator';
+import { THEME } from 'app/providers/ThemeProvider';
 import AddCommentForm from './AddCommentForm';
 
 export default {
@@ -19,8 +21,8 @@ Normal.args = {
     onSendComment: action('onSendComment'),
 };
 
-Normal.decorators = [
+Normal.decorators = [ThemeDecorator(THEME.DARK),
     StoreDecorator({
-        addCommentForm: { text: 'text' },
+        addCommentForm: { text: 'text', error: undefined },
     }),
 ];

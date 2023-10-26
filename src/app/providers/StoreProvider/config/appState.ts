@@ -6,11 +6,11 @@ import {
 import { IAppState } from 'app/slice/appSlice';
 import { IProfileState } from 'entities/Profile';
 import { AxiosInstance } from 'axios';
-import { ArticleDetailsRecommendationsState } from 'pages/ArticleDetails';
+import { ArticleDetailsRecommendationsState } from 'pages/ArticleDetailsPage';
 import { AddCommentFormState } from 'features/addCommentForm';
-import { ArticlesPageState } from 'pages/Articles';
+import { ArticlesPageState } from 'pages/ArticlesPage';
 import { ISaveScrollState } from 'features/SaveScroll';
-import { ArticleDetailsPageState } from 'pages/ArticleDetails/model/types';
+import { ArticleDetailsPageState } from 'pages/ArticleDetailsPage/model/types';
 import { IArticleDetailsState } from 'entities/Article';
 
 export interface AppState {

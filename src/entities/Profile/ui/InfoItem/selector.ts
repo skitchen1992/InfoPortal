@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { AppState } from 'app/providers/StoreProvider';
-import { getProfileForm } from 'pages/Profile/ui/selector';
+import { getProfileForm } from 'pages/ProfilePage/ui/selector';
 import { validateProfileData } from 'entities/Profile/model/services/validateProfileData/validateProfileData';
 
 const getField = (_state: AppState, field: string) => field;

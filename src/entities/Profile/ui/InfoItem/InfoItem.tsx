@@ -6,7 +6,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
-import { IInfo } from 'pages/Profile/ui/selector';
+import { IInfo } from 'pages/ProfilePage/ui/selector';
 import { profileActions } from 'entities/Profile';
 import selector from './selector';
 import cls from './InfoItem.module.scss';

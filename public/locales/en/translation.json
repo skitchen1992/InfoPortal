@@ -3,6 +3,7 @@
   "page.about": "About",
   "page.profile": "Profile",
   "page.articles": "Articles",
+  "page.create_article": "Create article",
   "page.not_found": "Page not found",
   "page.error": "Something went wrong",
   "label.update_page": "Update page",

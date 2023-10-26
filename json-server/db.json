@@ -606,14 +606,14 @@
   "users": [
     {
       "id": "1",
-      "userName": "admin",
+      "username": "admin",
       "password": "123",
       "role": "ADMIN",
       "avatar": "https://memepedia.ru/wp-content/uploads/2020/12/udivlennyj-bagz-banni-mem-shablon.jpg"
     },
     {
       "id": "2",
-      "userName": "user",
+      "username": "user",
       "password": "123",
       "role": "USER",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"

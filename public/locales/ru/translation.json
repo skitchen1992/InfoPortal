@@ -3,6 +3,7 @@
   "page.about": "О сайте",
   "page.profile": "Профиль",
   "page.articles": "Статьи",
+  "page.create_article": "Создать статью",
   "page.not_found": "Страница не найдена",
   "page.error": "Что-то пошло не так",
   "label.update_page": "Обновить страницу",

@@ -53,7 +53,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     <div className={cls.header}>
                         <Avatar size={30} src={article.user?.avatar} alt="Avatar" />
                         <Typography>
-                            {article.user.userName}
+                            {article.user.username}
                         </Typography>
                         <Typography>
                             {article.createdAt}

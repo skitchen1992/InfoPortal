@@ -6,7 +6,7 @@ import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
 import { IProfile } from 'entities/Profile/model/types/profile';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
-import { IInfo } from 'pages/Profile/ui/selector';
+import { IInfo } from 'pages/ProfilePage/ui/selector';
 import cls from './ProfileCard.module.scss';
 
 interface IProps {
