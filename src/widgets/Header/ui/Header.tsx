@@ -11,6 +11,7 @@ import { IconButton } from 'shared/ui/IconButton/IconButton';
 import { List } from 'phosphor-react';
 import { appActions } from 'app/slice/appSlice';
 import { getSideBarCollapsed } from 'widgets/SideBar/model/selectors/getSideBarCollapsed/getSideBarCollapsed';
+import { HStack } from 'shared/ui/Stack';
 import cls from './Header.module.scss';
 
 interface IProps {
@@ -48,14 +49,14 @@ export const Header: FC<IProps> = (props) => {
         <header className={classNames(cls.root, {}, [className])}>
             <IconButton data-testid="SideBarButton" onClick={onButtonClick}><List /></IconButton>
 
-            <div className={cls.actions}>
+            <HStack gap="8">
                 <ThemeSwitcher />
                 <LangSwitcher />
                 <Button onClick={authData ? onLogout : onShowModal} className={cls.button}>
                     {authData ? t('label.sign_out') : t('label.sign_in') }
                 </Button>
                 {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
-            </div>
+            </HStack>
         </header>
     );
 };

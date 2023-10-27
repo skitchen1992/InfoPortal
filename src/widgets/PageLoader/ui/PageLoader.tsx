@@ -1,6 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FC } from 'react';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { HStack } from 'shared/ui/Stack';
 import cls from './PageLoader.module.scss';
 
 interface IProps {
@@ -10,8 +11,8 @@ interface IProps {
 export const PageLoader: FC<IProps> = (props) => {
     const { className } = props;
     return (
-        <div className={classNames(cls.root, {}, [className])}>
+        <HStack justify="center" align="center" className={classNames(cls.root, {}, [className])}>
             <Loader size="large" />
-        </div>
+        </HStack>
     );
 };

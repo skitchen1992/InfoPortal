@@ -4,6 +4,7 @@ import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'app/providers/StoreProvider';
 import { getUserAuthData } from 'entities/User';
+import { HStack } from 'shared/ui/Stack';
 import cls from './SideBarItem.module.scss';
 import { ISideBarLinkList } from '../../model/types/sidebar';
 
@@ -26,12 +27,12 @@ export const SideBarItem = (props: IProps) => {
 
     return (
         <AppLink to={item.routePath}>
-            <div className={classNames(cls.link, {}, [])}>
+            <HStack align="center" padding="4" gap="8" className={classNames(cls.link, {}, [])}>
                 {item.icon}
-                <div className={classNames(cls.label, { [cls.collapsed]: collapsed }, [])}>
+                <div className={classNames('', { [cls.collapsed]: collapsed }, [])}>
                     {t(item.label)}
                 </div>
-            </div>
+            </HStack>
         </AppLink>
     );
 };

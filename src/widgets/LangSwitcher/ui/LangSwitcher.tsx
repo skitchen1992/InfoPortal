@@ -3,8 +3,8 @@ import { IconButton } from 'shared/ui/IconButton/IconButton';
 import { Translate } from 'phosphor-react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { HStack } from 'shared/ui/Stack';
 import { LANG } from './consts';
-import cls from './LangSwitcher.module.scss';
 
 interface IProps {
     className?: string
@@ -20,11 +20,11 @@ export const LangSwitcher: FC<IProps> = (props) => {
     };
 
     return (
-        <div className={classNames(cls.root, {}, [className])}>
+        <HStack align="center" gap="8" className={classNames('', {}, [className])}>
             <IconButton className={classNameButton} onClick={toggleLang}>
                 <Translate />
             </IconButton>
             {i18n?.language?.toUpperCase()}
-        </div>
+        </HStack>
     );
 };
