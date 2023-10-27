@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Loader } from 'shared/ui/Loader/Loader';
 import { Robot, Warning } from 'phosphor-react';
 import { Typography } from 'shared/ui/Typography/Typography';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './NoDataContainer.module.scss';
 
 const EmptyLayout: FunctionComponent = () => {
@@ -48,7 +49,7 @@ export const NoDataContainer: FC<IProps> = (props) => {
     const noDataToRender = noDataContent || <EmptyLayout />;
 
     return (
-        <div className={classNames(cls.root, {}, [className])}>
+        <HStack align="center" max justify="center" className={classNames(cls.root, {}, [className])}>
             {isLoading && loaderToRender}
 
             {!isLoading && !error && hasData && children}
@@ -57,13 +58,13 @@ export const NoDataContainer: FC<IProps> = (props) => {
 
             {!isLoading && error
                 && (
-                    <div className={cls.block}>
+                    <VStack max justify="center">
                         <div>
                             <Warning size={32} weight="bold" />
                         </div>
                         <Typography variant="body1">{t('label.error')}</Typography>
-                    </div>
+                    </VStack>
                 )}
-        </div>
+        </HStack>
     );
 };

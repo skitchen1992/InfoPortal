@@ -8,8 +8,8 @@ import { Country } from 'entities/Country';
 import { useAppDispatch, useAppSelector } from 'app/providers/StoreProvider';
 import { IInfo } from 'pages/ProfilePage/ui/selector';
 import { profileActions } from 'entities/Profile';
+import { HStack } from 'shared/ui/Stack';
 import selector from './selector';
-import cls from './InfoItem.module.scss';
 
 interface IProps {
     onChangeFormField: (value: string, name?: string) => void
@@ -37,7 +37,7 @@ export const InfoItem = memo((props: IProps) => {
     }, [dispatch, error, item.field]);
 
     return (
-        <div className={classNames(cls.root, {}, [className])}>
+        <HStack max align="center" justify="between" className={classNames('', {}, [className])}>
             <Typography variant="body1">
                 {t(item.label)}
             </Typography>
@@ -72,6 +72,6 @@ export const InfoItem = memo((props: IProps) => {
                 />
             )}
 
-        </div>
+        </HStack>
     );
 });

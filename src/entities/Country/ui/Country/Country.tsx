@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Select } from 'shared/ui/Select/Select';
 import { COUNTRY } from 'shared/consts/consts';
+import { ListBox } from 'shared/ui/ListBox/ListBox';
 
 const options = Object.entries(COUNTRY).map(([value, label]) => ({ value, label }));
 
@@ -21,14 +21,16 @@ export const Country: FC<IProps> = (props) => {
         name,
     } = props;
 
+    const onChangeHandler = (value: string) => {
+        onChange?.(value, name);
+    };
     return (
-        <Select
+        <ListBox
             size={size}
-            name={name}
             value={value}
             options={options}
-            disabled={readOnly}
-            onChange={onChange}
+            onChange={onChangeHandler}
+            readonly={readOnly}
         />
     );
 };

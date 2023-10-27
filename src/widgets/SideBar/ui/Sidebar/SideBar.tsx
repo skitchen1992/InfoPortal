@@ -11,15 +11,13 @@ export const SideBar: FC = () => {
 
     return (
         <aside data-testid="SideBar" className={classNames(cls.root, { [cls.collapsed]: collapsed }, [])}>
-            <VStack max>
-                {sideBarItems.map((item) => (
-                    <SideBarItem
-                        key={item.label}
-                        item={item}
-                        collapsed={collapsed}
-                    />
-                ))}
-            </VStack>
+            {sideBarItems.map((item) => (
+                <SideBarItem
+                    key={item.label}
+                    item={item}
+                    collapsed={collapsed}
+                />
+            ))}
         </aside>
     );
 };

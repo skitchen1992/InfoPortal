@@ -1,0 +1,78 @@
+.root {
+    position: relative;
+}
+
+.trigger {
+    border: 1px solid var(--border-color);
+    background-color: var(--main-bg-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    outline: none;
+
+    &:hover {
+        border: 1px solid var(--border-hover-color);
+    }
+
+    &:disabled {
+        background-color: var(--bg-color-disabled);
+        color: var(--color-disabled);
+    }
+}
+
+.small {
+    padding: 3px 8px;
+}
+
+.medium {
+    padding: 7px 12px;
+}
+
+.large {
+    padding: 11px 16px;
+}
+
+.options {
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--main-bg-color);
+    position: absolute;
+    z-index: 10000;
+    border-radius: var(--border-radius);
+}
+
+.item {
+    padding: 8px 4px;
+    border: 1px solid var(--border-color);
+    background-color: var(--main-bg-color);
+
+    &:first-child {
+        border-top-left-radius: var(--border-radius);
+        border-top-right-radius: var(--border-radius);
+    }
+
+    &:last-child {
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+    }
+}
+
+.active {
+    background: var(--inverted-primary-color);
+}
+
+.readonly {
+    opacity: 0.7;
+    border-color: transparent;
+
+    &:hover {
+        border-color: transparent;
+    }
+}
+
+.optionsTop {
+    bottom: 100%;
+}
+
+.arrow {
+    margin-left: 4px;
+}
