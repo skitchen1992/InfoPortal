@@ -27,6 +27,9 @@ blockquote,
 dl,
 dd {
     margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
 }
 
 /* Выставляем основные настройки по-умолчанию для body */

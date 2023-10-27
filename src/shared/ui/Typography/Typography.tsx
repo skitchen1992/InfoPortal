@@ -1,32 +1,35 @@
 import { FC, ReactNode } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import cls from './Typography.module.scss';
 
-const enum VARIANT {
-    H1 = 'h1',
-    H2 = 'h2',
-    H3 = 'h3',
-    H4 = 'h4',
-    H5 = 'h5',
-    H6 = 'h6',
-    BODY1 = 'body1',
-    BODY2 = 'body2',
-}
+export type Variant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2';
+export type Color = 'error' | 'primary' | 'secondary' | 'textPrimary' | 'textSecondary' | 'inherit';
 
-const enum COLOR {
-    ERROR = 'error',
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
-    TEXT_PRIMARY = 'textPrimary',
-    TEXT_SECONDARY = 'textSecondary',
-    INHERIT = 'inherit',
-}
+const variantClasses: Record<Variant, string> = {
+    h1: cls.h1,
+    h2: cls.h2,
+    h3: cls.h3,
+    h4: cls.h4,
+    h5: cls.h5,
+    h6: cls.h6,
+    body1: cls.body1,
+    body2: cls.body2,
+};
+
+const colorClasses: Record<Color, string> = {
+    error: cls.error,
+    primary: cls.primary,
+    secondary: cls.secondary,
+    textPrimary: cls.textPrimary,
+    textSecondary: cls.textSecondary,
+    inherit: cls.inherit,
+};
 
 interface IProps {
-    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2'
-    children?: string | ReactNode
+    variant?: Variant
+    children: string | ReactNode
     fontWeight?: boolean
-    color?: 'error' | 'primary' | 'secondary' | 'textPrimary' | 'textSecondary' | 'inherit'
+    color?: Color
     className?: string
 }
 
@@ -35,22 +38,20 @@ export const Typography: FC<IProps> = (props) => {
         children, variant = 'body1', fontWeight, color, className,
     } = props;
 
+    const Tag = variant === 'body1' || variant === 'body2' ? 'p' : variant;
+    const classes = [
+        className,
+        variantClasses[variant],
+        color && colorClasses[color],
+    ];
+
+    const mods: Mods = {
+        [cls.fontWeight]: fontWeight,
+    };
+
     return (
-        <div className={classNames(cls.root, {
-            [cls.h1]: variant === VARIANT.H1,
-            [cls.h2]: variant === VARIANT.H2,
-            [cls.h3]: variant === VARIANT.H3,
-            [cls.h4]: variant === VARIANT.H4,
-            [cls.h5]: variant === VARIANT.H5,
-            [cls.h6]: variant === VARIANT.H6,
-            [cls.body1]: variant === VARIANT.BODY1,
-            [cls.body2]: variant === VARIANT.BODY2,
-            [cls.fontWeight]: fontWeight,
-            [cls.error]: color === COLOR.ERROR,
-            [cls.inherit]: color === COLOR.INHERIT,
-        }, [className])}
-        >
+        <Tag className={classNames(cls.root, mods, classes)}>
             {children}
-        </div>
+        </Tag>
     );
 };

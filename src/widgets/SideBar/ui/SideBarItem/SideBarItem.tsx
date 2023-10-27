@@ -26,13 +26,15 @@ export const SideBarItem = (props: IProps) => {
     }
 
     return (
-        <AppLink to={item.routePath}>
-            <HStack align="center" padding="4" gap="8" className={classNames(cls.link, {}, [])}>
-                {item.icon}
-                <div className={classNames('', { [cls.collapsed]: collapsed }, [])}>
-                    {t(item.label)}
-                </div>
-            </HStack>
-        </AppLink>
+        <li className={classNames(cls.root, {}, [])}>
+            <AppLink to={item.routePath} className={classNames(cls.wrap, {}, [])}>
+                <HStack max align="center" padding="4" gap="8" className={classNames(cls.link, {}, [])}>
+                    {item.icon}
+                    <div className={classNames('', { [cls.collapsed]: collapsed }, [])}>
+                        {t(item.label)}
+                    </div>
+                </HStack>
+            </AppLink>
+        </li>
     );
 };
