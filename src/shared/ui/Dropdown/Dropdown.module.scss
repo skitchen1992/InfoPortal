@@ -27,7 +27,7 @@
     border: 1px solid var(--border-color);
     background-color: var(--main-bg-color);
     cursor: pointer;
-    color: var(--text-primary) ;
+    color: var(--text-primary);
 
     &:first-child {
         border-top-left-radius: var(--border-radius);
@@ -42,7 +42,7 @@
 
 .link {
     font: var(--body1);
-    color: var(--text-primary) ;
+    color: var(--text-primary);
     padding: 8px 4px;
     border: 1px solid var(--border-color);
     background-color: var(--main-bg-color);
