@@ -44,6 +44,7 @@
     padding: 8px 4px;
     border: 1px solid var(--border-color);
     background-color: var(--main-bg-color);
+    cursor: pointer;
 
     &:first-child {
         border-top-left-radius: var(--border-radius);
@@ -57,7 +58,11 @@
 }
 
 .active {
-    background: var(--inverted-primary-color);
+    background: var(--card-bg-color);
+}
+
+.selected {
+    cursor: auto;
 }
 
 .readonly {
@@ -75,4 +80,24 @@
 
 .arrow {
     margin-left: 4px;
+}
+
+.optionsBottomLeft {
+    top: 100%;
+    right: 0;
+}
+
+.optionsBottomRight {
+    top: 100%;
+    left: 0;
+}
+
+.optionsTopRight {
+    bottom: 100%;
+    left: 0;
+}
+
+.optionsTopLeft {
+    right: 0;
+    bottom: 100%;
 }

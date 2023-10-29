@@ -12,6 +12,9 @@ import { List } from 'phosphor-react';
 import { appActions } from 'app/slice/appSlice';
 import { getSideBarCollapsed } from 'widgets/SideBar/model/selectors/getSideBarCollapsed/getSideBarCollapsed';
 import { HStack } from 'shared/ui/Stack';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { RoutePath } from 'app/providers/Router/routeConfig/routeConfig';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from './Header.module.scss';
 
 interface IProps {
@@ -52,9 +55,29 @@ export const Header: FC<IProps> = (props) => {
             <HStack gap="8">
                 <ThemeSwitcher />
                 <LangSwitcher />
-                <Button onClick={authData ? onLogout : onShowModal} className={cls.button}>
-                    {authData ? t('label.sign_out') : t('label.sign_in') }
-                </Button>
+                {
+                    authData ? (
+                        <Dropdown
+                            direction="bottom left"
+                            className={cls.dropdown}
+                            items={[
+                                {
+                                    content: t('page.profile'),
+                                    href: `${RoutePath.profile}/${authData.id}`,
+                                },
+                                {
+                                    content: t('label.sign_out'),
+                                    onClick: onLogout,
+                                },
+                            ]}
+                            trigger={<Avatar alt="Avatar" size={30} src={authData.avatar} />}
+                        />
+                    ) : (
+                        <Button onClick={onShowModal} className={cls.button}>
+                            {t('label.sign_in')}
+                        </Button>
+                    )
+                }
                 {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
             </HStack>
         </header>

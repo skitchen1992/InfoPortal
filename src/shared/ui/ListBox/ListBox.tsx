@@ -1,7 +1,8 @@
-import { Fragment, ReactNode } from 'react';
+import { FC, Fragment, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { CaretDown, CaretUp, Check } from 'phosphor-react';
+import { DropdownDirection } from 'shared/types/ui';
 import { HStack } from '../Stack';
 import cls from './ListBox.module.scss';
 
@@ -10,8 +11,6 @@ export interface ListBoxItem {
     label: ReactNode;
     disabled?: boolean;
 }
-
-type DropdownDirection = 'top' | 'bottom';
 
 type Size = 'small' | 'large' | 'medium'
 
@@ -28,11 +27,13 @@ interface ListBoxProps {
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {
-    bottom: cls.optionsBottom,
-    top: cls.optionsTop,
+    'bottom left': cls.optionsBottomLeft,
+    'bottom right': cls.optionsBottomRight,
+    'top right': cls.optionsTopRight,
+    'top left': cls.optionsTopLeft,
 };
 
-export const ListBox = (props: ListBoxProps) => {
+export const ListBox: FC<ListBoxProps> = (props) => {
     const {
         className,
         options,
@@ -40,7 +41,7 @@ export const ListBox = (props: ListBoxProps) => {
         defaultValue,
         onChange,
         readonly,
-        direction = 'bottom',
+        direction = 'bottom right',
         label,
         size = 'small',
     } = props;
@@ -88,6 +89,7 @@ export const ListBox = (props: ListBoxProps) => {
                                                 {
                                                     [cls.active]: active,
                                                     [cls.disabled]: item.disabled,
+                                                    [cls.selected]: selected,
                                                 },
                                             )}
                                         >
@@ -95,7 +97,6 @@ export const ListBox = (props: ListBoxProps) => {
                                                 {item.label}
                                                 {selected && <Check size={16} />}
                                             </HStack>
-
                                         </li>
                                     )}
                                 </HListBox.Option>
